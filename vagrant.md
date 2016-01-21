@@ -33,7 +33,7 @@ vagrant是一款使用虚拟机统一开发环境的虚拟机管理工具。
 	**@important**  
 	**配置vagrant用户**  
 	vagrant默认使用vagrant用户，需要在centos中建立这个用户，并设置密码为vagrant  
-	（1）`useradd -g vagrant vagrant`  
+	（1）`groupadd vagrant;useradd -g vagrant vagrant`  
     	（2）`passwd vagrant`    连续输入两次密码"vagrant"  
     	（3）`visudo` 打开一个文件修改如下两处：  
 	     A.在`root ALL=(ALL) ALL`下方添加`vagrant ALL=(ALL) NOPASSWD:ALL`;  

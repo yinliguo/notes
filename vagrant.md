@@ -103,7 +103,7 @@ FAQ：
 	注意：三种方式不可同时配置！
 
  4. 无法安装VBoxGuestAdditions，提示“building the main Guest Additions module  [failed]”
-   需要安装gcc和gcc-c++，再安装kernel-devel，红帽系列使用yum -y install gcc gcc-c++ kernel-devel，debian系列使用sudo apt-get install gcc gcc-c++ kernel-devel，然后重启就可以正常安装VBoxGuestAdditions了
+   需要安装gcc和gcc-c++，再安装kernel-devel，红帽系列使用yum -y install gcc gcc-c++ kernel kernel-devel kernel-headers，debian系列使用sudo apt-get install gcc gcc-c++ kernel kernel-devel kernel-headers，然后重启就可以正常安装VBoxGuestAdditions了
 
 5. 导入box文件，启动虚拟机时，出现无法启动网卡的问题  
 删除/etc/udev/rules.d/70-persistent-net.rules，然后再vagrant reload即可

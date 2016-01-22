@@ -38,7 +38,7 @@ vagrant是一款使用虚拟机统一开发环境的虚拟机管理工具。
     	（3）`visudo` 打开一个文件修改如下两处：  
 	     A.在`root ALL=(ALL) ALL`下方添加`vagrant ALL=(ALL) NOPASSWD:ALL`;  
 	     B.注释掉`Defaults requiretty`  
-	（4）`wget http://github.com/mitchellh/vagrant/raw/master/keys/vagrant.pub`  
+	（4）`wget https://github.com/mitchellh/vagrant/blob/master/keys/vagrant.pub`  
 	（5）`mv ./vagrant.pub /home/vagrant/.ssh/authorized_keys`  
 	（6）`chown vagrant:vagrant -R /home/vagrant/.ssh`  
 	（7）`chmod 0700 /home/vagrant/.ssh`  

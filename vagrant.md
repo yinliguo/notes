@@ -36,7 +36,7 @@ vagrant是一款使用虚拟机统一开发环境的虚拟机管理工具。
 	（1）`groupadd vagrant;useradd -g vagrant vagrant`  
     	（2）`passwd vagrant`    连续输入两次密码"vagrant"  
     	（3）`visudo` 打开一个文件修改如下两处：  
-	     A.在`root ALL=(ALL) ALL`下方添加`vagrant ALL=(ALL) NOPASSWD:ALL`;  
+	     A.在`root ALL=(ALL) ALL`下方添加`vagrant ALL=(ALL) NOPASSWD: ALL`;  
 	     B.注释掉`Defaults requiretty`  
 	（4）`wget https://github.com/mitchellh/vagrant/blob/master/keys/vagrant.pub`  
 	（5）`mv ./vagrant.pub /home/vagrant/.ssh/authorized_keys`  
@@ -63,7 +63,7 @@ vagrant是一款使用虚拟机统一开发环境的虚拟机管理工具。
  （1）安装vagrant和virtualbox  
  （2）进入centos1.box所在的目录  
  （3）`vagrant box add centos1.box --name centos1`将centos还原到virtualbox里  
- （4）`vagrant init`生成Vagrantfile，这是这个centos的vagrant配置文件  
+ （4）`vagrant init centos1`生成Vagrantfile，这是这个centos的vagrant配置文件  
  （5）编辑Vagrantfile，将`config.vm.network "private_network", ip: "192.168.33.10"`这一行的注释去掉  
  （6）将`config.vm.synced_folder`的注释去掉，并将后面的第一个参数路径改为自己的代码所在的位置，第二个参数修改为centos中配置的项目路径，本示例中就是上面提到的`/www`  
  （7）配置完成保存，并在当前目录运行`vagrant up`，启动完成后，即可在主机中使用192.168.33.10访问centos中的项目

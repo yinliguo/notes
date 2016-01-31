@@ -113,3 +113,6 @@ FAQ：
 ```
 config.vm.synced_folder "/Users/abc/myproject", "/www", :mount_options => ["dmode=777", "fmode=777"]
 ```
+
+7. 如何在原来的基础上打包？
+在Vagrantfile文件所在的目录下使用`vagrant package`则会把新增加的内容打包

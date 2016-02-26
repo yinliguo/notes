@@ -16,23 +16,23 @@
 
 ### 标签
 1. The root element
-- html
+- html  
 文档根元素
 
 2. Document metadata
-- head
+- head  
 文档元数据的集合
 
-- title
+- title  
 文档的标题和名字，在head中只有一个title，用于历史记录、标签或搜索结果
 
-- base
+- base  
 文档的基地址，用于解析相对url
 > href：文档基地址
 > target：Default browsing context for hyperlink navigation and form submission
 
 - link
-链接其他的资源
+链接其他的资源  
 > href：超链接的地址
 > crossorigin：如何操作跨域请求
 > rel：包含超链接的文档和目标资源的关系
@@ -42,7 +42,7 @@
 > sizes：icons的大小（对于rel="icon"）
 
 - meta
-表示各种各样的不能使用title、base、link、style、和script标签表示的元数据
+表示各种各样的不能使用title、base、link、style、和script标签表示的元数据  
 > name：元数据的名称
 > http-equiv：Pragma directive
 > content：元素的值

@@ -16,7 +16,7 @@
 
 ### 标签
 1. The root element
-- html  
+- <html>  
 文档根元素
 
 2. Document metadata

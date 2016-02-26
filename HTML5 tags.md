@@ -1,22 +1,22 @@
 # HTML5标签
 
 ### 全局属性
-> accesskey：定义快捷键，激活或聚焦到元素
-> class：样式
-> contenteditable: 将其变为可编辑输入框
-> dir：规定元素内容的文本方向
-> hidden：是否隐藏
-> id：标识符
-> lang：指定元素内容的主要语言
-> spellchek：检查拼写和语法
-> style：样式
-> tabindex：指定按tab键选中的顺序
-> title：元素的信息
-> translate：是否翻译该元素的文本内容 
+- accesskey：定义快捷键，激活或聚焦到元素
+- class：样式
+- contenteditable: 将其变为可编辑输入框
+- dir：规定元素内容的文本方向
+- hidden：是否隐藏
+- id：标识符
+- lang：指定元素内容的主要语言
+- spellchek：检查拼写和语法
+- style：样式
+- tabindex：指定按tab键选中的顺序
+- title：元素的信息
+- translate：是否翻译该元素的文本内容 
 
 ### 标签
 1. The root element
-- <html>  
+- html  
 文档根元素
 
 2. Document metadata

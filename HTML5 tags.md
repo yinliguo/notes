@@ -28,8 +28,8 @@
 
 - base  
 文档的基地址，用于解析相对url
-> href：文档基地址
-> target：Default browsing context for hyperlink navigation and form submission
+> - href：文档基地址
+> - target：Default browsing context for hyperlink navigation and form submission
 
 - link   
 链接其他的资源  

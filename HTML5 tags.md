@@ -15,11 +15,11 @@
 - translate：是否翻译该元素的文本内容 
 
 ### 标签
-1. The root element
+#### The root element
 - html  
 文档根元素
 
-2. Document metadata
+#### Document metadata
 - head  
 文档元数据的集合
 
@@ -59,7 +59,7 @@ name、http-equiv和charset必须指定一个，一个文档中只能有一个ch
 > media：Applicable media
 > type：内嵌资源的类型
 
-3. Sections
+#### Sections
 - body
 文档内容
 > onafterprint：用于打印时执行的js，IE和firefox支持，不过IE中是在打印对话框出现之前执行，firefox是在之后执行
@@ -99,7 +99,7 @@ name、http-equiv和charset必须指定一个，一个文档中只能有一个ch
 - address
 最近的article或body的联系信息
 
-4. Grouping content
+#### Grouping content
 - p
 段落
 
@@ -147,7 +147,7 @@ figure内容的标题
 - main
 文档的主要内容
 
-5. Text-level semantic
+#### Text-level semantic
 - a
 如果有href属性表示一个超链接，否则表示一个占位符
 > href：超链接地址
@@ -250,7 +250,7 @@ figure内容的标题
 - wbr
 在合适的地方换行
 
-6. Edits
+#### Edits
 - ins
 定义已被插入文档的文本
 > cite：引文的链接或关于编辑的更多信息
@@ -260,7 +260,7 @@ figure内容的标题
 定义移除的部分
 > 属性同ins
 
-7. Embedded content
+#### Embedded content
 - img
 图片
 > alt：图片不可用时的替换文字
@@ -351,11 +351,11 @@ figure内容的标题
 - svg
 矢量图片
 
-8. Links
+#### Links
 - a
 链接
 
-9. Tabular data
+#### Tabular data
 - table
 表格
 > border：边框
@@ -397,7 +397,7 @@ figure内容的标题
 > abbr：规定单元格内容的缩写
 > sorted：列排列方向
 
-10. Forms
+#### Forms
 - form
 表单
 > accept-charset：表单的字符编码
@@ -523,7 +523,7 @@ input元素的定义标签
 - legend
 fieldset的标题
 
-11. Scripting
+#### Scripting
 - script
 脚本
 > src：资源地址

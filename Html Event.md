@@ -20,6 +20,8 @@
 - onunload：页面下载完成或关闭浏览器时
 
 ### form事件
+> 应用于所有元素，但常见于form中
+
 - onblur：元素失去焦点时
 - onchange：元素的值改变时
 - oncontextmenu：当上下文菜单被触发时

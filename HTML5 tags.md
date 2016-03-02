@@ -12,7 +12,7 @@
 - style：样式
 - tabindex：指定按tab键选中的顺序
 - title：元素的信息
-- translate：是否翻译该元素的文本内容 
+- translate：是否翻译该元素的文本内容
 
 ### 标签
 #### The root element

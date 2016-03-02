@@ -42,4 +42,61 @@
 ### 量词
 - +：至少一个
 - *：0个或多个
-- ?：0个或1个
+- ?：0个或一个
+- {n}：n个
+- {n,}：失少n个
+- {m, n}：m到n个
+
+### 位置
+- a$：以a结尾
+- ^a：以a开头
+- ?n=a：后面紧接a
+- ?!a：后面没有紧接a
+
+---
+
+### RegExp对象的属性
+- global：是否具有标志g
+- ignoreCase：是否具有标志i
+- lastIndex：下一次匹配时的字符位置，如果不是全局匹配的话，这个属性就没什么用了
+- multiline：是否具有标志m
+- source：正则表达式的源文本
+
+---
+
+### 使用方法
+##### 使用RegExp对象的test方法
+```
+/abc/.test('abc')
+```
+#### string中使用正则表达式
+- search
+> 返回第一个匹配的索引，没有的话返回-1
+
+```
+var a = 'abcabc';
+a.search(/abc/); //返回0
+```
+- match
+> 返回匹配的文本数组，如果匹配不到则返回null
+
+```
+var b = 'abcabcd';
+b.match(/abc./g); //为什么只返回['abca']，却没有'abcd'？
+```
+
+- replace
+> 替换匹配的文本
+
+```
+var b = 'aAbBcC';
+b.replace(/[A-Z]/g, function(word) {return word.toLowerCase()}); //b被替换为'aabbcc'
+```
+
+- split
+> 切割字符串
+
+```
+var b = '1982年8月20日';
+b.split(/[^0-9]/g, 3); //返回['1982', '8', '20']
+```

@@ -36,7 +36,13 @@
 // UI元素状态伪类，常用于表单中的元素
 :enabled：启用元素
 :disabled：禁用元素
-:checked：选中状态，用于单选或复选按钮
+:checked：选中状态，用于单选或复选框
+:indeterminate：不确定的状态，用于单选或复选框
+
+// 结构伪类
+:root：根元素，即<html>
+:nth-child(x)：x取值可以为an+b(n从1开始)、odd（奇数）、even（偶数）
+:nth-last-child(x)：x取值同上，但是从最后一个元素开始
 ```
 
 ### 盒模型

@@ -110,10 +110,10 @@ background-color：背景颜色
 background-image：背景图片
 background-repeat：重复方式
 background-attachment：背景是否固定
-background-position：
-background-clip：
-background-origin：
-background-size：
+background-position：背景图片位置
+background-clip：背景图片的显示范围，是否包含padding或border
+background-origin：背景图片的起点，是相对于content、padding还是border的左上角
+background-size：背景图片大小
 ```
 - 边框
 ```

@@ -43,6 +43,25 @@
 :root：根元素，即<html>
 :nth-child(x)：x取值可以为an+b(n从1开始)、odd（奇数）、even（偶数）
 :nth-last-child(x)：x取值同上，但是从最后一个元素开始
+:nth-of-type(x)：x取值同上，取同类型元素
+:nth-last-of-type(x)：x取值同上，取的顺序与上面相反
+:first-child：同nth-child(1)
+:last-child：同nth-last-child(1)
+:first-of-type：同nth-of-type(1)
+:last-of-type：同nth-last-of-type(1)
+:only-child：父元素只有一个子元素，匹配子元素
+:only-of-type：只包含一个同类型的子元素，匹配子元素
+:empty：没有子元素也没有内容的元素
+:not()：去掉括号中的元素
+```
+
+- 伪元素
+```
+::first-line：一个元素第一行内容
+::first-letter：第一个字母
+::before：之前的内容
+::after：之后的内容
+::selection：用于选择文本时的样式，只能定义background和color
 ```
 
 ### 盒模型

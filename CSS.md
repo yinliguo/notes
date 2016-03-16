@@ -94,20 +94,28 @@
 
 ### 样式
 - 颜色
-```
-```
+> 颜色模式有：RGB、RGBA、HSL、HSLA 
+> 透明度属性opacity
+
 - 文字
 ```
+font-family：
+font-size：
+font-weight：
+font-style：
+font-stretch：
+font-size-adjust：
 ```
 - 背景
 ```
-
 ```
 - 边框
 ```
 ```
-- 渐变
+- 阴影
 ```
+box-shadow：
+text-shadow：
 ```
 - 动画
 ```

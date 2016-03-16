@@ -99,15 +99,21 @@
 
 - 文字
 ```
-font-family：
-font-size：
-font-weight：
-font-style：
-font-stretch：
-font-size-adjust：
+font-family：字体
+font-size：字号
+font-weight：字体粗细
+font-style：字体风格，比如斜体
 ```
 - 背景
 ```
+background-color：背景颜色
+background-image：背景图片
+background-repeat：重复方式
+background-attachment：背景是否固定
+background-position：
+background-clip：
+background-origin：
+background-size：
 ```
 - 边框
 ```

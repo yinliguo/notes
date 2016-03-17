@@ -132,6 +132,12 @@ border-image-repeat：边框图片重复方式
 box-shadow：阴影
 text-shadow：文字阴影
 ```
+- 渐变
+```
+线性渐变：background-image: linear-gradient(0deg, orange, red[, ...])
+径向渐变：background-image: radial-gradient(circle, #000, #fff)
+重复渐变：background-image: repeating-radial-gradient(red, green 40px, orange 80px)
+```
 - 动画
 ```
 transition：过渡动画

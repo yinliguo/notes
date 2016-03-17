@@ -129,12 +129,15 @@ border-image-repeat：边框图片重复方式
 ```
 - 阴影
 ```
-box-shadow：
-text-shadow：
+box-shadow：阴影
+text-shadow：文字阴影
 ```
 - 动画
 ```
+transition：过渡动画
+animation：帧动画
 ```
 - 媒体查询
 ```
+@media {媒体类型} and ({条件}){}
 ```

@@ -117,6 +117,15 @@ background-size：背景图片大小
 ```
 - 边框
 ```
+border-color：边框颜色
+border-style：边框样式
+border-width：边框宽度
+border-radius：圆角
+border-image-source：边框图片源
+border-image-slice：边框图片剪切位置
+border-image-width：边框宽度
+border-image-outset：边框放大的量
+border-image-repeat：边框图片重复方式
 ```
 - 阴影
 ```

@@ -8,9 +8,8 @@
 
 ##### Function
 - eval(x)
-> 将参数按照js执行
-
 ```
+将参数按照js执行
 eval('alert(1)');
 ```
 - parseInt(string, radix)
@@ -97,7 +96,9 @@ encodeURIComponent('http://prose.io/#yinliguo/notes/edit/master/javascript%20bui
 ##### Properties of the Object Constructor
 - Object.prototype
 - Object.getPrototypeOf(O)
-> 获取原型对象
+```
+获取原型对象
+```
 
 - Object.getOwnPropertyDescriptor(O, P)
 - Object.getOwnPropertyNames(O)

@@ -10,11 +10,13 @@
 - eval(x)
 ```
 将参数按照js执行
+
 eval('alert(1)');
 ```
 - parseInt(string, radix)
 ```
-// 将字符串转成整数。radix表示进制，2~36之间
+将字符串转成整数。radix表示进制，2~36之间
+
 parseInt('123'); // 123
 parseInt('1.7'); // 1
 parseInt('1f', 16); // 31
@@ -22,12 +24,14 @@ parseInt('12@12'); // 12
 ```
 - parseFloat(string)
 ```
-// 将字符串转成浮点数
+将字符串转成浮点数
+
 parseFloat('12.01'); // 12.01
 ```
 - isNaN(number)
 ```
-// 是否为非数字
+是否为非数字
+
 isNaN(12); // false
 isNaN('12'); // false，进行隐式类型转换
 isNaN('hello'); // true
@@ -41,7 +45,8 @@ isNaN(o); // true
 ```
 - isFinite(number)
 ```
-// 是否非无穷数
+是否非无穷数
+
 isFinite(123); // true 
 isFinite(2/0); // false
 isFinite(Math.PI); // true
@@ -51,25 +56,29 @@ isFinite(Number.POSITIVE_INFINITY); // false
 ##### URI Handling Function
 - decodeURI(encodeURI)
 ```
-// 解码URI
+解码URI
+
 decodeURI('http://prose.io/#yinliguo/notes/edit/master/javascript%20built-in%20object.md')
 // 输出http://prose.io/#yinliguo/notes/edit/master/javascript built-in object.md
 ```
 - decodeURIComponent(encodeURIComponent)
 ```
-// 解码URI
+解码URI
+
 decodeURIComponent('http%3A%2F%2Fprose.io%2F%23yinliguo%2Fnotes%2Fedit%2Fmaster%2Fjavascript%20built-in%20object.md');
 // 输出http://prose.io/#yinliguo/notes/edit/master/javascript built-in object.md
 ```
 - encodeURI(uri)
 ```
-// 将URI进行编码
+将URI进行编码
+
 encodeURI('http://prose.io/#yinliguo/notes/edit/master/javascript built-in object.md'); 
 // 输出http://prose.io/#yinliguo/notes/edit/master/javascript%20built-in%20object.md
 ```
 - encodeURIComponent(uriComponent)
 ```
-// 对URI进行编码
+对URI进行编码
+
 encodeURIComponent('http://prose.io/#yinliguo/notes/edit/master/javascript%20built-in%20object.md')
 // 输出http%3A%2F%2Fprose.io%2F%23yinliguo%2Fnotes%2Fedit%2Fmaster%2Fjavascript%20built-in%20object.md
 ```
@@ -98,11 +107,30 @@ encodeURIComponent('http://prose.io/#yinliguo/notes/edit/master/javascript%20bui
 - Object.getPrototypeOf(O)
 ```
 获取原型对象
-```
 
+var a = [];
+Object.getPrototypeOf(a); // 输出[]
+```
 - Object.getOwnPropertyDescriptor(O, P)
+```
+获取自身属性描述符，而不是原型的属性
+
+var o = {a: 123};
+Object.getOwnPropertyDescriptor(o, 'a'); // 输出{value: 123, writable: true, enumberable: true, configurable: true}
+```
 - Object.getOwnPropertyNames(O)
+```
+获取自身的属性名称
+var o = {a: 1, b: 2};
+Object.getOwnPropertyNames(o); // ['a', 'b']
+```
 - Object.create(O[, Properties])
+```
+创建对象。O是原型对象，Properties是属性描述符
+var p = {a: 1};
+var d = {b: {value: 1}};
+var o = Object.create(p, d); // o为{b: 1}，它的原型是p
+```
 - Object.defineProperty(O, P, Attributes)
 - Object.defineProperties(O, Properties)
 - Object.seal(O)

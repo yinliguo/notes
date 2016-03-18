@@ -8,13 +8,11 @@
 
 - Function
 > - eval(x)
-
 ```
 // 将参数按照js执行
 eval('alert(1)');
 ```
 > - parseInt(string, radix)
-
 ```
 // 将字符串转成整数。radix表示进制，2~36之间
 parseInt('123'); // 123

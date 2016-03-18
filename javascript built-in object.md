@@ -1,18 +1,18 @@
 # JavaScript内置对象
 
 ### The Global Object
-- Value Properties
-> - NaN
-> - Infinity
-> - undefined
+##### Value Properties
+- NaN
+- Infinity
+- undefined
 
-- Function
-> - eval(x)
+##### Function
+- eval(x)
 ```
 // 将参数按照js执行
 eval('alert(1)');
 ```
-> - parseInt(string, radix)
+- parseInt(string, radix)
 ```
 // 将字符串转成整数。radix表示进制，2~36之间
 parseInt('123'); // 123
@@ -21,13 +21,13 @@ parseInt('1f', 16); // 31
 parseInt('12@12'); // 12
 ```
 
-> - parseFloat(string)
+- parseFloat(string)
 ```
 // 将字符串转成浮点数
 parseFloat('12.01'); // 12.01
 ```
 
-> - isNaN(number)
+- isNaN(number)
 ```
 // 是否为非数字
 isNaN(12); // false
@@ -41,7 +41,7 @@ isNaN(f); // true
 var o = {};
 isNaN(o); // true
 ```
-> - isFinite(number)
+- isFinite(number)
 
 ```
 // 是否非无穷数
@@ -52,7 +52,7 @@ isFinite(Number.MAX_VALUE); // true
 isFinite(Number.POSITIVE_INFINITY); // false
 ```
 
-- URI Handling Function
+##### URI Handling Function
 ```
 decodeURI(encodeURI)
 decodeURIComponent(encodeURIComponent)

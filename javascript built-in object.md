@@ -309,14 +309,49 @@ a.join('@'); // '1@2@3'，不改变a
 ```
 - Array.prototype.pop()
 ```
+弹出最后一个数组元素
 
+var a = [1, 2, 3];
+a.pop(); // 3，a为[1, 3]
 ```
 - Array.prototype.push([item1[, item2...]])
+```
+将元素加入数组
+
+var a = [1, 2, 3];
+a.push(4); // 4，a为[1, 2, 3, 4]
+```
 - Array.prototype.reverse()
+```
+反转数组
+
+var a = [1, 2, 3];
+a.reverse(); // [3, 2, 1]，a为[3, 2, 1]
+```
 - Array.prototype.shift()
+```
+弹出第一个数组元素
+
+var a = [1, 2, 3];
+a.shift(); // 1，a为[2, 3]
+```
 - Array.prototype.slice(start, end)
+```
+获取index为start到end - 1的元素
+
+var a = [0, 1, 2, 3, 4, 5, 6];
+a.slice(1, 3); // [1, 2]，不改变a
+```
 - Array.prototype.sort(comparefn)
+```
+comparefn返回true则进行交换位置
+
+var a = [4, 5, 2, 6, 3];
+a.sort(function(prev, next) {return prev - next;}); // a变为[2, 3, 4, 5, 6]
+```
 - Array.prototype.splice(start, deleteCount[item1[, item2...]])
+```
+```
 - Array.prototype.unshift([item1[, item2...]])
 - Array.prototype.indexOf(searchElement[, fromIndex])
 - Array.prototype.lastIndex(searchElemen[, fromIndex])

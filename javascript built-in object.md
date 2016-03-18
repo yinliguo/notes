@@ -53,6 +53,7 @@ isFinite(Math.PI); // true
 isFinite(Number.MAX_VALUE); // true
 isFinite(Number.POSITIVE_INFINITY); // false
 ```
+
 ##### URI Handling Function
 - decodeURI(encodeURI)
 ```
@@ -82,6 +83,7 @@ encodeURI('http://prose.io/#yinliguo/notes/edit/master/javascript built-in objec
 encodeURIComponent('http://prose.io/#yinliguo/notes/edit/master/javascript%20built-in%20object.md')
 // 输出http%3A%2F%2Fprose.io%2F%23yinliguo%2Fnotes%2Fedit%2Fmaster%2Fjavascript%20built-in%20object.md
 ```
+
 ##### Constructor
 - Object()
 - Function()
@@ -97,6 +99,7 @@ encodeURIComponent('http://prose.io/#yinliguo/notes/edit/master/javascript%20bui
 - SyntaxError()
 - TypeError()
 - URIError()
+
 ##### Other Properties
 - Math
 - JSON
@@ -204,6 +207,7 @@ Object.isExtensible(o); // false
 var o = {a: 1, b: 2};
 Object.keys(o); // ['a', 'b']
 ```
+
 ##### Properties of the Object Prototype Object
 - Object.prototype.constructor
 - Object.prototype.toString()
@@ -255,6 +259,7 @@ Object.prototype.propertyIsEnumeralbe(o, 'a'); // true
 ##### Properties of the Function Constructor
 - Function.prototype
 - Function.length
+
 ##### Properties of the Function Prototype Object
 - Function.prototype.constructor
 - Function.prototype.toString()
@@ -282,6 +287,7 @@ Object.prototype.toString.call(f); // '[Object Function]'
 ##### Properties of the Array Constructor
 - Array.prototype
 - Array.isArray(arg)
+
 ##### Properties of the Array Prototype Object
 - Array.prototype.constructor
 - Array.prototype.toString()
@@ -435,6 +441,7 @@ a.reduce(function(r, e, i, a){return r+e;}, 1); // 7
 
 String.fromCharCode(65, 66, 67); // 'ABC'
 ```
+
 ##### Properties of the String Prototype Object
 - String.prototype.constructor
 - String.prototype.toString()
@@ -551,6 +558,7 @@ str.trim(); // 'abc'
 ### Boolean Objects
 ##### Properties of the Boolean Constructor
 - Boolean.prototype
+
 ##### Properties of the Boolean Prototype Object
 - Boolean.prototype.constructor
 - Boolean.prototype.toString()
@@ -568,6 +576,7 @@ a.toString(); // true
 - Number.NaN
 - Number.NEGTIVE_INFINITY
 - Number.POSITIVE_INFINITY
+
 ##### Properties of the Number Prototype Object
 - Number.prototype.constructor
 - Number.prototype.toString([radix])
@@ -624,6 +633,7 @@ Data.UTC(2005, 6, 6); // 1120780800000
 ```
 返回现在时间的毫秒数
 ```
+
 ##### Properties of the Date Prototype Object
 - Date.prototype.constructor
 - Date.prototype.toString()
@@ -836,6 +846,7 @@ t.toJSON(); // '2016-03-18T09:42:33.410Z'
 ### RegExp Objects
 ##### Properties of the RegExp Constructor
 - RegExp.prototype
+
 ##### Properties of the RegExp Prototype Object
 - RegExp.prototype.constructor
 - RegExp.prototype.exec(string)
@@ -845,6 +856,7 @@ t.toJSON(); // '2016-03-18T09:42:33.410Z'
 ### Error Objects
 ##### Properties of the Error Constructor
 - Error.prototype
+
 ##### Properties of the Error Prototype Object
 - Error.prototype.constructor
 - Error.prototype.name
@@ -861,6 +873,7 @@ t.toJSON(); // '2016-03-18T09:42:33.410Z'
 - PI
 - SQRT1_2
 - SQRT2
+
 ##### Function Properties of the Math Object
 - abs(x)
 - acos(x)

@@ -121,34 +121,134 @@ Object.getOwnPropertyDescriptor(o, 'a'); // 输出{value: 123, writable: true, e
 - Object.getOwnPropertyNames(O)
 ```
 获取自身的属性名称
+
 var o = {a: 1, b: 2};
 Object.getOwnPropertyNames(o); // ['a', 'b']
 ```
 - Object.create(O[, Properties])
 ```
 创建对象。O是原型对象，Properties是属性描述符
+
 var p = {a: 1};
 var d = {b: {value: 1}};
 var o = Object.create(p, d); // o为{b: 1}，它的原型是p
 ```
 - Object.defineProperty(O, P, Attributes)
-- Object.defineProperties(O, Properties)
-- Object.seal(O)
-- Object.freeze(O)
-- Object.preventExtensions(O)
-- Object.isSealed(O)
-- Object.isFrozen(O)
-- Object.isExtensible(O)
-- Object.keys(O)
-##### Properties of the Object Prototype Object
 ```
-Object.prototype.constructor
-Object.prototype.toString()
-Object.prototype.toLocaleString()
-Object.prototype.valueOf()
-Object.prototype.hasOwnProperty(V)
-Object.prototype.isPrototypeOf(V)
-Object.prototype.propertyIsEnumerable(V)
+给对象添加属性。O为需要添加属性的对象，P为属性名称，Attributes为属性描述符
+
+var o = {};
+Object.defineProperty(o, 'a', {value: 1}); // o为{a: 1}
+```
+- Object.defineProperties(O, Properties)
+```
+给对象添加属性
+
+var o = {};
+Object.defineProperties(o, {a: {value: 1}, b: {value: 2}}); // o为{a: 1, b: 2}
+```
+- Object.seal(O)
+```
+密封对象，阻止对象添加和删除属性
+
+var o = {a: 1};
+Object.seal(o);
+o.a = 2; // o为{a: 2}
+o.c = 2; // 不生效
+delete(c); // 不生效
+```
+- Object.freeze(O)
+```
+冻结对象，在seal的基础上不能修改属性
+
+var o = {a: 1};
+Object.freeze(o);
+o.a = 2; 不生效
+```
+- Object.preventExtensions(O)
+```
+阻止对象添加新属性
+
+var o = {};
+Object.preventExtensions(o);
+o.a = 1; // 不生效
+```
+- Object.isSealed(O)
+```
+对象是否被密封
+
+var o = {a: 1};
+Object.seal(c);
+Object.isSealed(c); // true
+```
+- Object.isFrozen(O)
+```
+对象是否被冻结
+
+var o = {a: 1};
+Object.freeze(o);
+Object.isFrozen(o); // true
+```
+- Object.isExtensible(O)
+```
+对象是否可扩展属性
+
+var o = {};
+Object.preventExtensions(o);
+Object.isExtensible(o); // false
+```
+- Object.keys(O)
+```
+获取对象的所有属性值
+
+var o = {a: 1, b: 2};
+Object.keys(o); // ['a', 'b']
+```
+##### Properties of the Object Prototype Object
+- Object.prototype.constructor
+- Object.prototype.toString()
+```
+转换成字符串
+
+var d = 123;
+Object.prototype.toString.call(d); // '[Object Number]'
+```
+- Object.prototype.toLocaleString()
+```
+转换成字符串
+
+var d = 123;
+Object.prototype.toLocaleString.call(d); // '123'
+```
+- Object.prototype.valueOf()
+```
+显示值
+
+var t = new Date();
+Object.prototype.valueOf.call(t); // Fri Mar 18 2016 14:09:25 GMT+0800 (CST)
+```
+- Object.prototype.hasOwnProperty(V)
+```
+对象是否存在属性V
+
+var o = {a: 1};
+Object.prototype.hasOwnProperty.call(o, 'a'); // ture
+Object.prototype.hasOwnProperty.call(o, 'b'); // false
+```
+- Object.prototype.isPrototypeOf(V)
+```
+判断p是否是o的原型
+
+var p = {};
+var o = {a: 1};
+Object.prototype.isPrototypeOf.call(p, o); // true
+```
+- Object.prototype.propertyIsEnumerable(V)
+```
+属性是否可枚举
+
+var o = {a: 1};
+Object.prototype.propertyIsEnumeralbe(o, 'a'); // true
 ```
 
 ### Function Objects

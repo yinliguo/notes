@@ -8,8 +8,8 @@
 
 ##### Function
 - eval(x)
+> 将参数按照js执行
 ```
-// 将参数按照js执行
 eval('alert(1)');
 ```
 - parseInt(string, radix)
@@ -20,13 +20,11 @@ parseInt('1.7'); // 1
 parseInt('1f', 16); // 31
 parseInt('12@12'); // 12
 ```
-
 - parseFloat(string)
 ```
 // 将字符串转成浮点数
 parseFloat('12.01'); // 12.01
 ```
-
 - isNaN(number)
 ```
 // 是否为非数字
@@ -42,7 +40,6 @@ var o = {};
 isNaN(o); // true
 ```
 - isFinite(number)
-
 ```
 // 是否非无穷数
 isFinite(123); // true 
@@ -51,55 +48,68 @@ isFinite(Math.PI); // true
 isFinite(Number.MAX_VALUE); // true
 isFinite(Number.POSITIVE_INFINITY); // false
 ```
-
 ##### URI Handling Function
+- decodeURI(encodeURI)
 ```
-decodeURI(encodeURI)
-decodeURIComponent(encodeURIComponent)
-encodeURI(uri)
-encodeURIComponent(uriComponent)
+// 解码URI
+decodeURI('http://prose.io/#yinliguo/notes/edit/master/javascript%20built-in%20object.md')
+// 输出http://prose.io/#yinliguo/notes/edit/master/javascript built-in object.md
+```
+- decodeURIComponent(encodeURIComponent)
+```
+// 解码URI
+decodeURIComponent('http%3A%2F%2Fprose.io%2F%23yinliguo%2Fnotes%2Fedit%2Fmaster%2Fjavascript%20built-in%20object.md');
+// 输出http://prose.io/#yinliguo/notes/edit/master/javascript built-in object.md
+```
+- encodeURI(uri)
+```
+// 将URI进行编码
+encodeURI('http://prose.io/#yinliguo/notes/edit/master/javascript built-in object.md'); 
+// 输出http://prose.io/#yinliguo/notes/edit/master/javascript%20built-in%20object.md
+```
+- encodeURIComponent(uriComponent)
+```
+// 对URI进行编码
+encodeURIComponent('http://prose.io/#yinliguo/notes/edit/master/javascript%20built-in%20object.md')
+// 输出http%3A%2F%2Fprose.io%2F%23yinliguo%2Fnotes%2Fedit%2Fmaster%2Fjavascript%20built-in%20object.md
 ```
 ##### Constructor
-```
-Object()
-Function()
-Array()
-String()
-Number()
-Date()
-RegExp()
-Error()
-EvalError()
-RangeError()
-ReferenceError()
-SyntaxError()
-TypeError()
-URIError()
-```
-- Other Properties
-```
-Math
-JSON
-```
+- Object()
+- Function()
+- Array()
+- String()
+- Number()
+- Date()
+- RegExp()
+- Error()
+- EvalError()
+- RangeError()
+- ReferenceError()
+- SyntaxError()
+- TypeError()
+- URIError()
+##### Other Properties
+- Math
+- JSON
 
 ### Object Objects
 ##### Properties of the Object Constructor
-```
-Object.prototype
-Object.getPrototypeOf(O)
-Object.getOwnPropertyDescriptor(O, P)
-Object.getOwnPropertyNames(O)
-Object.create(O[, Properties])
-Object.defineProperty(O, P, Attributes)
-Object.defineProperties(O, Properties)
-Object.seal(O)
-Object.freeze(O)
-Object.preventExtensions(O)
-Object.isSealed(O)
-Object.isFrozen(O)
-Object.isExtensible(O)
-Object.keys(O)
-```
+- Object.prototype
+- Object.getPrototypeOf(O)
+> 获取原型对象
+
+- Object.getOwnPropertyDescriptor(O, P)
+- Object.getOwnPropertyNames(O)
+- Object.create(O[, Properties])
+- Object.defineProperty(O, P, Attributes)
+- Object.defineProperties(O, Properties)
+- Object.seal(O)
+- Object.freeze(O)
+- Object.preventExtensions(O)
+- Object.isSealed(O)
+- Object.isFrozen(O)
+- Object.isExtensible(O)
+- Object.keys(O)
 ##### Properties of the Object Prototype Object
 ```
 Object.prototype.constructor

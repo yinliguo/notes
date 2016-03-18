@@ -550,155 +550,367 @@ str.trim(); // 'abc'
 
 ### Boolean Objects
 ##### Properties of the Boolean Constructor
-```
-Boolean.prototype
-```
+- Boolean.prototype
 ##### Properties of the Boolean Prototype Object
+- Boolean.prototype.constructor
+- Boolean.prototype.toString()
 ```
-Boolean.prototype.constructor
-Boolean.prototype.toString()
-Boolean.prototype.valueOf()
+var a = true;
+a.toString(); // true
 ```
+- Boolean.prototype.valueOf()
 
 ### Number Objects
 ##### Properties of the Number Constructor
-```
-Number.prototype
-Number.MAX_VALUE
-Number.MIN_VALUE
-Number.NaN
-Number.NEGTIVE_INFINITY
-Number.POSITIVE_INFINITY
-```
+- Number.prototype
+- Number.MAX_VALUE
+- Number.MIN_VALUE
+- Number.NaN
+- Number.NEGTIVE_INFINITY
+- Number.POSITIVE_INFINITY
 ##### Properties of the Number Prototype Object
+- Number.prototype.constructor
+- Number.prototype.toString([radix])
 ```
-Number.prototype.constructor
-Number.prototype.toString([radix])
-Number.prototype.toLocaleString()
-Number.prototype.valueOf()
-Number.prototype.toFixed(fractionDigits)
-Number.prototype.toExponential(fractionDigits)
-Number.prototype.toPrecision(precision)
+按照进制输出字符串，默认十进制
+
+var n = 123;
+n.toString(); // '123'
+n.toString(16); // '7b'
+```
+- Number.prototype.toLocaleString()
+- Number.prototype.valueOf()
+- Number.prototype.toFixed(fractionDigits)
+```
+限制小数位数，不改变原数
+
+var n = 1.1234;
+n.toFixed(2); // 1.12
+```
+- Number.prototype.toExponential(fractionDigits)
+```
+转换成指数形式，不改变原数
+
+var n = 123456;
+n.toExponential(2); // 1.23e+5
+```
+- Number.prototype.toPrecision(precision)
+```
+超过precision位后转换成指数形式，不改变原数
+
+var n = 123456;
+n.toPrecision(10); // 123456
+n.toPrecision(2); // 1.2e+5
 ```
 
 ### Date Objects
 ##### Properties of the Date Constructor
+- Date.prototype
+- Date.parse(string)
 ```
-Date.prototype
-Date.parse(string)
-Date.UTC(year, month[, day[, hours[, minutes[, seconds[, ms]]]]])
-Date.now()
+将日期字符串转换成毫秒数
+
+Date.parse('Jul 8, 2005'); // 1120752000000
+Date.parse('2005, 7, 8'); // 1120752000000
+Date.parse('2005-7-8'); // 1120752000000
+```
+- Date.UTC(year, month[, day[, hours[, minutes[, seconds[, ms]]]]])
+```
+返回日期的毫秒数，注意有时差的，跟parse返回的不一样
+
+Data.UTC(2005, 6, 6); // 1120780800000
+```
+- Date.now()
+```
+返回现在时间的毫秒数
 ```
 ##### Properties of the Date Prototype Object
+- Date.prototype.constructor
+- Date.prototype.toString()
 ```
-Date.prototype.constructor
-Date.prototype.toString()
-Date.prototype.toDateString()
-Date.prototype.toTimeString()
-Date.prototype.toLocaleString()
-Date.prototype.toLocaleDateString()
-Date.prototype.toLocaleTimeString()
-Date.prototype.valueOf()
-Date.prototype.getTime()
-Date.prototype.getFullYear()
-Date.prototype.getUTCFullYear()
-Date.prototype.getMonth()
-Date.prototype.getUTCMonth()
-Date.prototype.getDate()
-Date.prototype.getUTCDate()
-Date.prototype.getDay()
-Date.prototype.getUTCDay()
-Date.prototype.getHours()
-Date.prototype.getUTCHours()
-Date.prototype.getMinutes()
-Date.prototype.getUTCMinutes()
-Date.prototype.getSeconds()
-Date.prototype.getUTCSeconds()
-Date.prototype.getMilliseconds()
-Date.prototype.getUTCMillisecons()
-Date.prototype.getTimezoneOffset()
-Date.prototype.setTime(time)
-Date.prototype.setMilliseconds(ms)
-Date.prototype.setUTCMilliseconds(ms)
-Date.prototype.setSeconds(sec[, ms])
-Date.prototype.setUTCSeconds(sec[, ms])
-Date.prototype.setMinutes(min[, sec[, ms]])
-Date.prototype.setUTCMinutes(min[, sec[, ms]])
-Date.prototype.setHours(hour[, min[, sec[, ms]]])
-Date.prototype.setUTCHours(hour[, min[, sec[, ms]]])
-Date.prototype.setDate(date)
-Date.prototype.setUTCDate(date)
-Date.prototype.setMonth(month[, date])
-Date.prototype.setUTCMonth(month[, date])
-Date.prototype.setFullYear(year[, month[, date]])
-Date.prototype.setUTCFullYear(year[, month[, date]])
-Date.prototype.toUTCString()
-Date.prototype.toISOString()
-Date.prototype.toJSON(key)
+var t = new Date();
+t.toString(); // 'Fri Mar 18 2016 17:42:33 GMT+0800 (CST)'
+```
+- Date.prototype.toDateString()
+```
+返回日期的字符串
+
+var t = new Date();
+t.toDateSting(); // 'Fri Mar 18 2016'
+```
+- Date.prototype.toTimeString()
+```
+返回时间的字符串
+
+var t = new Date();
+t.toTimeString(); // '17:42:33 GMT+0800 (CST)'
+```
+- Date.prototype.toLocaleString()
+- Date.prototype.toLocaleDateString()
+```
+返回本地的日期格式
+
+var t = new Date();
+t.toLocaleDateString(); // '2016/3/18'
+```
+- Date.prototype.toLocaleTimeString()
+```
+返回本地的时间格式
+
+var t = new Date();
+t.toLocaleTimeString(); // '下午5:42:33'
+```
+- Date.prototype.valueOf()
+```
+返回毫秒数
+
+var t = new Date();
+t.valueOf(); // 1458294153410
+```
+- Date.prototype.getTime()
+```
+返回毫秒数
+
+var t = new Date();
+t.getTime(); // 1458294153410
+```
+- Date.prototype.getFullYear()
+```
+获取年份
+
+var t = new Date();
+t.getFullYear(); // 2016
+```
+- Date.prototype.getUTCFullYear()
+```
+返回UTC时间的年份
+```
+- Date.prototype.getMonth()
+```
+获取月份，注意与实际月份差1
+
+var t = new Date();
+t.getMonth(); // 2
+```
+- Date.prototype.getUTCMonth()
+```
+返回UTC时间的月份
+```
+- Date.prototype.getDate()
+```
+返回天
+
+var t = new Date();
+t.getDate(); // 18
+```
+- Date.prototype.getUTCDate()
+```
+返回UTC时间的天
+```
+- Date.prototype.getDay()
+```
+返回星期
+```
+- Date.prototype.getUTCDay()
+```
+返回UTC时间的星期
+```
+- Date.prototype.getHours()
+```
+返回小时
+```
+- Date.prototype.getUTCHours()
+```
+返回UTC时间的小时
+```
+- Date.prototype.getMinutes()
+```
+返回分钟
+```
+- Date.prototype.getUTCMinutes()
+```
+返回UTC时间的分钟
+```
+- Date.prototype.getSeconds()
+```
+返回秒
+```
+- Date.prototype.getUTCSeconds()
+```
+返回UTC时间的秒
+```
+- Date.prototype.getMilliseconds()
+```
+返回毫秒数
+```
+- Date.prototype.getUTCMillisecons()
+```
+返回UTC时间的毫秒数
+```
+- Date.prototype.getTimezoneOffset()
+```
+返回时差的分钟数
+```
+- Date.prototype.setTime(time)
+```
+设置时间，time为毫秒数
+```
+- Date.prototype.setMilliseconds(ms)
+```
+设置毫秒数
+```
+- Date.prototype.setUTCMilliseconds(ms)
+```
+设置UTC毫秒数
+```
+- Date.prototype.setSeconds(sec[, ms])
+```
+设置秒数[毫秒数]
+```
+- Date.prototype.setUTCSeconds(sec[, ms])
+```
+设置UTC秒数[毫秒数]
+```
+- Date.prototype.setMinutes(min[, sec[, ms]])
+```
+设置分钟
+```
+- Date.prototype.setUTCMinutes(min[, sec[, ms]])
+```
+设置UTC分钟
+```
+- Date.prototype.setHours(hour[, min[, sec[, ms]]])
+```
+设置小时
+```
+- Date.prototype.setUTCHours(hour[, min[, sec[, ms]]])
+```
+设置UTC小时
+```
+- Date.prototype.setDate(date)
+```
+设置天
+```
+- Date.prototype.setUTCDate(date)
+```
+设置UTC天
+```
+- Date.prototype.setMonth(month[, date])
+```
+设置月
+```
+- Date.prototype.setUTCMonth(month[, date])
+```
+设置UTC月
+```
+- Date.prototype.setFullYear(year[, month[, date]])
+```
+设置年
+```
+- Date.prototype.setUTCFullYear(year[, month[, date]])
+```
+设置UTC年
+```
+- Date.prototype.toUTCString()
+```
+返回UTC时间的字符串
+
+var t = new Date();
+t.toUTCString(); // 'Fri, 18 Mar 2016 09:42:33 GMT'
+```
+- Date.prototype.toISOString()
+```
+返回国际标准时间
+
+var t = new Date();
+t.toISOString(); // '2016-03-18T09:42:33.410Z'
+```
+- Date.prototype.toJSON(key)
+```
+返回JSON格式的时间字符串。（不懂为什么）
+
+var t = new Date();
+t.toJSON(); // '2016-03-18T09:42:33.410Z'
 ```
 
 ### RegExp Objects
 ##### Properties of the RegExp Constructor
-```
-RegExp.prototype
-```
+- RegExp.prototype
 ##### Properties of the RegExp Prototype Object
-```
-RegExp.prototype.constructor
-RegExp.prototype.exec(string)
-RegExp.prototype.test(string)
-RegExp.prototype.toString()
-```
+- RegExp.prototype.constructor
+- RegExp.prototype.exec(string)
+- RegExp.prototype.test(string)
+- RegExp.prototype.toString()
 
 ### Error Objects
 ##### Properties of the Error Constructor
-```
-Error.prototype
-```
+- Error.prototype
 ##### Properties of the Error Prototype Object
-```
-Error.prototype.constructor
-Error.prototype.name
-Error.prototype.message
-Error.prototype.toString()
-```
+- Error.prototype.constructor
+- Error.prototype.name
+- Error.prototype.message
+- Error.prototype.toString()
 
 ### The Math Object
 ##### Value Properties of the Math Object
-```
-E
-LN10
-LN2
-LOG2E
-LOG10E
-PI
-SQRT1_2
-SQRT2
-```
+- E
+- LN10
+- LN2
+- LOG2E
+- LOG10E
+- PI
+- SQRT1_2
+- SQRT2
 ##### Function Properties of the Math Object
+- abs(x)
+- acos(x)
+- asin(x)
+- atan(x)
+- atan2(y,x)
+- ceil(x)
 ```
-abs(x)
-acos(x)
-asin(x)
-atan(x)
-atan2(y,x)
-ceil(x)
-cos(x)
-exp(x)
-floor(x)
-log(x)
-max([value1[, value2[, value3...]]])
-min([value1[, value2[, value3...]]])
-pow(x, y)
-random()
-round(x)
-sin(x)
-sqrt(x)
-tan(x)
+Math.ceil(1.1); // 2
 ```
+- cos(x)
+- exp(x)
+- floor(x)
+```
+Math.floor(1.8); // 1
+```
+- log(x)
+- max([value1[, value2[, value3...]]])
+- min([value1[, value2[, value3...]]])
+- pow(x, y)
+- random()
+```
+0~1之间的随机数，要注意是没有参数的
+```
+- round(x)
+```
+Math.round(1.1); // 1
+Math.round(1.8); // 2
+```
+- sin(x)
+- sqrt(x)
+```
+开方
+
+Math.sqrt(4); // 2
+```
+- tan(x)
 
 ### The JSON Object
+- parse(text[, reviver])
 ```
-parse(text[, reviver])
-stingify(value[, replacer[, space]])
+将JSON格式的字符串转成对象，注意属性是用双引号括起来的
+
+var a = '{"a": 1}';
+JSON.parse(a); // {a: 1}
+```
+- stingify(value[, replacer[, space]])
+```
+把JSON格式的对象转化成字符串
+
+var a = {a: 1};
+JSON.stringify(a); // '{"a": 1}'
 ```

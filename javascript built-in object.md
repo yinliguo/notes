@@ -59,7 +59,7 @@ decodeURIComponent(encodeURIComponent)
 encodeURI(uri)
 encodeURIComponent(uriComponent)
 ```
-- Constructor
+##### Constructor
 ```
 Object()
 Function()
@@ -83,7 +83,7 @@ JSON
 ```
 
 ### Object Objects
-- Properties of the Object Constructor
+##### Properties of the Object Constructor
 ```
 Object.prototype
 Object.getPrototypeOf(O)
@@ -100,7 +100,7 @@ Object.isFrozen(O)
 Object.isExtensible(O)
 Object.keys(O)
 ```
-- Properties of the Object Prototype Object
+##### Properties of the Object Prototype Object
 ```
 Object.prototype.constructor
 Object.prototype.toString()
@@ -112,12 +112,12 @@ Object.prototype.propertyIsEnumerable(V)
 ```
 
 ### Function Objects
-- Properties of the Function Constructor
+##### Properties of the Function Constructor
 ```
 Function.prototype
 Function.length
 ```
-- Properties of the Function Prototype Object
+##### Properties of the Function Prototype Object
 ```
 Function.prototype.constructor
 Function.prototype.toString()
@@ -127,12 +127,12 @@ Function.prototype.bind(thisArg[, arg1[, arg2...]])
 ```
 
 ### Array Objects
-- Properties of the Array Constructor
+##### Properties of the Array Constructor
 ```
 Array.prototype
 Array.isArray(arg)
 ```
-- Properties of the Array Prototype Object
+##### Properties of the Array Prototype Object
 ```
 Array.prototype.constructor
 Array.prototype.toString()
@@ -159,12 +159,12 @@ Array.prototype.reduceRight(callbackfn[, initialValue])
 ```
 
 ### String Objects
-- Properties of the String Constructor
+##### Properties of the String Constructor
 ```
 String.prototype
 String.fromCharCode([char0[, char1[, char2...]])
 ```
-- Properties of the String Prototype Object
+##### Properties of the String Prototype Object
 ```
 String.prototype.constructor
 String.prototype.toString()
@@ -188,11 +188,11 @@ String.prototype.trim()
 ```
 
 ### Boolean Objects
-- Properties of the Boolean Constructor
+##### Properties of the Boolean Constructor
 ```
 Boolean.prototype
 ```
-- Properties of the Boolean Prototype Object
+##### Properties of the Boolean Prototype Object
 ```
 Boolean.prototype.constructor
 Boolean.prototype.toString()
@@ -200,7 +200,7 @@ Boolean.prototype.valueOf()
 ```
 
 ### Number Objects
-- Properties of the Number Constructor
+##### Properties of the Number Constructor
 ```
 Number.prototype
 Number.MAX_VALUE
@@ -209,7 +209,7 @@ Number.NaN
 Number.NEGTIVE_INFINITY
 Number.POSITIVE_INFINITY
 ```
-- Properties of the Number Prototype Object
+##### Properties of the Number Prototype Object
 ```
 Number.prototype.constructor
 Number.prototype.toString([radix])
@@ -221,14 +221,14 @@ Number.prototype.toPrecision(precision)
 ```
 
 ### Date Objects
-- Properties of the Date Constructor
+##### Properties of the Date Constructor
 ```
 Date.prototype
 Date.parse(string)
 Date.UTC(year, month[, day[, hours[, minutes[, seconds[, ms]]]]])
 Date.now()
 ```
-- Properties of the Date Prototype Object
+##### Properties of the Date Prototype Object
 ```
 Date.prototype.constructor
 Date.prototype.toString()
@@ -277,11 +277,11 @@ Date.prototype.toJSON(key)
 ```
 
 ### RegExp Objects
-- Properties of the RegExp Constructor
+##### Properties of the RegExp Constructor
 ```
 RegExp.prototype
 ```
-- Properties of the RegExp Prototype Object
+##### Properties of the RegExp Prototype Object
 ```
 RegExp.prototype.constructor
 RegExp.prototype.exec(string)
@@ -290,11 +290,11 @@ RegExp.prototype.toString()
 ```
 
 ### Error Objects
-- Properties of the Error Constructor
+##### Properties of the Error Constructor
 ```
 Error.prototype
 ```
-- Properties of the Error Prototype Object
+##### Properties of the Error Prototype Object
 ```
 Error.prototype.constructor
 Error.prototype.name
@@ -303,7 +303,7 @@ Error.prototype.toString()
 ```
 
 ### The Math Object
-- Value Properties of the Math Object
+##### Value Properties of the Math Object
 ```
 E
 LN10
@@ -314,7 +314,7 @@ PI
 SQRT1_2
 SQRT2
 ```
-- Function Properties of the Math Object
+##### Function Properties of the Math Object
 ```
 abs(x)
 acos(x)

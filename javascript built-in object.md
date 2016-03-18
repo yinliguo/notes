@@ -253,50 +253,80 @@ Object.prototype.propertyIsEnumeralbe(o, 'a'); // true
 
 ### Function Objects
 ##### Properties of the Function Constructor
-```
-Function.prototype
-Function.length
-```
+- Function.prototype
+- Function.length
 ##### Properties of the Function Prototype Object
+- Function.prototype.constructor
+- Function.prototype.toString()
 ```
-Function.prototype.constructor
-Function.prototype.toString()
-Function.prototype.apply(thisArg, argArray)
-Function.prototype.call(thisArg[, arg1[, arg2...]])
-Function.prototype.bind(thisArg[, arg1[, arg2...]])
+转换成字符串
+
+var f = function(){};
+Function.prototype.toString.call(f); // 'function(){}'，显然重写了toString方法
+Object.prototype.toString.call(f); // '[Object Function]'
+```
+- Function.prototype.apply(thisArg, argArray)
+```
+临时改变this值，参数为数组
+```
+- Function.prototype.call(thisArg[, arg1[, arg2...]])
+```
+临时改变this值，参数为普通参数
+```
+- Function.prototype.bind(thisArg[, arg1[, arg2...]])
+```
+永久改变this值，参数为普通参数
 ```
 
 ### Array Objects
 ##### Properties of the Array Constructor
-```
-Array.prototype
-Array.isArray(arg)
-```
+- Array.prototype
+- Array.isArray(arg)
 ##### Properties of the Array Prototype Object
+- Array.prototype.constructor
+- Array.prototype.toString()
 ```
-Array.prototype.constructor
-Array.prototype.toString()
-Array.prototype.toLocalString()
-Array.ptototype.concat([item1[, item2...]])
-Array.prototype.join(separator)
-Array.prototype.pop()
-Array.prototype.push([item1[, item2...]])
-Array.prototype.reverse()
-Array.prototype.shift()
-Array.prototype.slice(start, end)
-Array.prototype.sort(comparefn)
-Array.prototype.splice(start, deleteCount[item1[, item2...]])
-Array.prototype.unshift([item1[, item2...]])
-Array.prototype.indexOf(searchElement[, fromIndex])
-Array.prototype.lastIndex(searchElemen[, fromIndex])
-Array.prototype.every(callbackfn[, thisArg])
-Array.prototype.some(callbackfn[, thisArg])
-Array.prototype.forEach(callbackfn[, thisArg])
-Array.prototype.map(callbackfn[, thisArg])
-Array.prototype.filter(callbackfn[, thisArg])
-Array.prototype.reduce(callbackfn[, initialValue])
-Array.prototype.reduceRight(callbackfn[, initialValue])
+转换成字符串
+
+var a = [1, 2, 3];
+a.toString(); // '1,2,3'，重写了toString方法
+Object.prototype.toString.call(a); // '[Object Array]'
 ```
+- Array.prototype.toLocalString()
+- Array.ptototype.concat([item1[, item2...]])
+```
+连接数组
+
+var a = [1, 2, 3], b = [4, 5];
+a.concat(b); // [1, 2, 3, 4, 5]，a和b都不改变
+```
+- Array.prototype.join(separator)
+```
+将数组转换成字符串，以separator分割
+
+var a = [1, 2, 3];
+a.join('@'); // '1@2@3'，不改变a
+```
+- Array.prototype.pop()
+```
+
+```
+- Array.prototype.push([item1[, item2...]])
+- Array.prototype.reverse()
+- Array.prototype.shift()
+- Array.prototype.slice(start, end)
+- Array.prototype.sort(comparefn)
+- Array.prototype.splice(start, deleteCount[item1[, item2...]])
+- Array.prototype.unshift([item1[, item2...]])
+- Array.prototype.indexOf(searchElement[, fromIndex])
+- Array.prototype.lastIndex(searchElemen[, fromIndex])
+- Array.prototype.every(callbackfn[, thisArg])
+- Array.prototype.some(callbackfn[, thisArg])
+- Array.prototype.forEach(callbackfn[, thisArg])
+- Array.prototype.map(callbackfn[, thisArg])
+- Array.prototype.filter(callbackfn[, thisArg])
+- Array.prototype.reduce(callbackfn[, initialValue])
+- Array.prototype.reduceRight(callbackfn[, initialValue])
 
 ### String Objects
 ##### Properties of the String Constructor

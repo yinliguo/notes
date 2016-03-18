@@ -23,11 +23,11 @@ parseInt('12@12'); // 12
 ```
 
 > - parseFloat(string)
-
 ```
 // 将字符串转成浮点数
 parseFloat('12.01'); // 12.01
 ```
+
 > - isNaN(number)
 ```
 // 是否为非数字

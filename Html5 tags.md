@@ -132,7 +132,7 @@ name、http-equiv和charset必须指定一个，一个文档中只能有一个ch
 - dt  
 条目或名称
 
-- dl  
+- dd  
 描述、定义或值
 
 - figure  

@@ -8,11 +8,13 @@
 
 - Function
 > - eval(x)
+
 ```
 // 将参数按照js执行
 eval('alert(1)');
 ```
 > - parseInt(string, radix)
+
 ```
 // 将字符串转成整数。radix表示进制，2~36之间
 parseInt('123'); // 123
@@ -21,6 +23,7 @@ parseInt('1f', 16); // 31
 parseInt('12@12'); // 12
 ```
 > - parseFloat(string)
+
 ```
 // 将字符串转成浮点数
 parseFloat('12.01'); // 12.01
@@ -40,6 +43,7 @@ var o = {};
 isNaN(o); // true
 ```
 > - isFinite(number)
+
 ```
 // 是否非无穷数
 isFinite(123); // true 

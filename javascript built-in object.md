@@ -428,31 +428,124 @@ a.reduce(function(r, e, i, a){return r+e;}, 1); // 7
 
 ### String Objects
 ##### Properties of the String Constructor
+- String.prototype
+- String.fromCharCode([char0[, char1[, char2...]])
 ```
-String.prototype
-String.fromCharCode([char0[, char1[, char2...]])
+从unicode值返回字符串
+
+String.fromCharCode(65, 66, 67); // 'ABC'
 ```
 ##### Properties of the String Prototype Object
+- String.prototype.constructor
+- String.prototype.toString()
+- String.prototype.valueOf()
+- String.prototype.charAt(pos)
 ```
-String.prototype.constructor
-String.prototype.toString()
-String.prototype.valueOf()
-String.prototype.charAt(pos)
-String.prototype.concat([str1[, str2[, str3...]]])
-String.prototype.indexOf(searchString, position)
-String.prototype.lastIndexOf(searchString, position)
-String.prototype.localeCompare(that)
-String.prototype.match(regexp)
-String.prototype.replace(searchValue, replaceValue)
-String.prototype.search(regexp)
-String.prototype.slice(start, end)
-String.prototype.split(separator, limit)
-String.prototype.substring(start, end)
-String.prototype.toLowerCase()
-String.prototype.toLocaleLowerCase()
-String.prototype.toUpperCase()
-String.prototype.toLocaleUpperCase()
-String.prototype.trim()
+查询在pos位置上的字符
+
+var str = 'abc';
+str.charAt(1); // 'b'
+```
+- String.prototype.concat([str1[, str2[, str3...]]])
+```
+返回连接的字符串，不改变原字符串
+
+var str1 = 'abc';
+var str2 = 'def';
+str1.concat(str2); // 'abcdef'
+```
+- String.prototype.indexOf(searchString, position)
+```
+返回查询字符串所在的第一个位置
+
+var str = 'abcade';
+str.indexOf('a'); // 0
+```
+- String.prototype.lastIndexOf(searchString, position)
+```
+返回查询字符串所在的最后一个位置
+
+var str = 'abcade';
+str.lastIndexOf('a'); // 3
+```
+- String.prototype.localeCompare(that)
+```
+以本地的排序顺序比较两个字符串，如果小于that则返回小于0的数，否则返回大于0的数
+
+var str1 = 'abc';
+var str2 = 'bcd';
+str1.localeCompare(str2); // -1
+```
+- String.prototype.match(regexp)
+```
+正则表达式匹配字符串，返回数组
+
+var str = 'abcabcabc';
+str.match(/b/); // ['b']
+```
+- String.prototype.replace(searchValue, replaceValue)
+```
+替换字符串，返回替换后的字符串，原字符串不变
+
+var str = 'abcdedf';
+str.replace('d', 'e'); // 'abceedf'，如果想都替换应该用正则表达式
+```
+- String.prototype.search(regexp)
+```
+查找在字符串中的位置，只返回第一个索引，否则返回-1。
+
+var str = 'abcdedf';
+str.search('d'); // 3
+```
+- String.prototype.slice(start, end)
+```
+返回start到end-1的字符串，不改变原字符串
+
+var str = 'abcdefg';
+str.slice(1, 2); // 'b'
+```
+- String.prototype.split(separator, limit)
+```
+将字符串分割成数组，不改变原字符串
+
+var str = '1912,1,2';
+str.split('i,', 2); // ['1912', '1']
+```
+- String.prototype.substring(start, end)
+```
+获取star到end-1的子字符串，不改变原字符串
+
+var str = 'abcdef';
+str.substring(1, 2); // 'b'
+```
+- String.prototype.toLowerCase()
+```
+返回字符串的小写，不改变原字符串
+
+var str = 'aAbB';
+str.toLowerCase(); // 'aabb'
+```
+- String.prototype.toLocaleLowerCase()
+```
+按照本地语言的映射关系返回小写
+```
+- String.prototype.toUpperCase()
+```
+返回字符串的大写，不改变原字符串
+
+var str = 'aAbB';
+str.toUpperCase(); // 'AABB'
+```
+- String.prototype.toLocaleUpperCase()
+```
+按本地语言的映射关系返回大写
+```
+- String.prototype.trim()
+```
+去掉字符串两端的空格，不改变原字符串
+
+var str = ' abc ';
+str.trim(); // 'abc'
 ```
 
 ### Boolean Objects

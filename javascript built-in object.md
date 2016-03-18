@@ -351,17 +351,80 @@ a.sort(function(prev, next) {return prev - next;}); // a变为[2, 3, 4, 5, 6]
 ```
 - Array.prototype.splice(start, deleteCount[item1[, item2...]])
 ```
+删除/替换元素，返回被删除的元素
+
+var a = [1, 2, 3, 4, 5];
+a.splice(2, 2); // 返回[3, 4]，a变为[1, 2, 5]
+var a = [1, 2, 3, 4, 5];
+a.splice(2, 2, 1, 2); // 返回[3, 4]，a变为[1, 2, 1, 2, 5]
 ```
 - Array.prototype.unshift([item1[, item2...]])
+```
+向数组的开头添加元素，返回数组长度
+
+var a = [3, 4];
+a.unshift(1, 2); // 4，a变为[1, 2, 3, 4]
+```
 - Array.prototype.indexOf(searchElement[, fromIndex])
+```
+查询元素所在的第一个索引
+
+var a = [1, 2, 3, 4, 5];
+a.indexOf(3); // 4
+```
 - Array.prototype.lastIndex(searchElemen[, fromIndex])
+```
+查询元素最后一个索引
+
+var a = [2, 3, 4, 5, 2];
+a.lastIndexOf(2); // 4
+```
 - Array.prototype.every(callbackfn[, thisArg])
+```
+如果数组的每一项是否满足条件（即callbackfn返回true），则every返回true，否则返回false
+
+var a = [1, 2, 3];
+a.every(function(i) {return i > 0;}); // true
+```
 - Array.prototype.some(callbackfn[, thisArg])
+```
+如果数组中有元素满足条件（即callbackfn返回true），则some返回ture，否则返回false
+
+var a = [1, 2, 3];
+a.some(function(i) {return i > 2;}); // true
+```
 - Array.prototype.forEach(callbackfn[, thisArg])
+```
+遍历数组应用callbackfn，callbackfn的参数为element, index, array
+
+var a = [1, 2, 3];
+a.forEach(function(ele, i, arr){arr[i] = ele - 1;}); // a变为[0, 1, 2]
+```
 - Array.prototype.map(callbackfn[, thisArg])
+```
+遍历数组并应用callbackfn，参数为element, index, array
+
+var a = [1, 2, 3];
+a.forEach(function(ele, i, arr){arr[i] = ele - 1;}); // a变为[0, 1, 2]
+```
 - Array.prototype.filter(callbackfn[, thisArg])
+```
+应用callbackfn（返回true为满足条件）取出满足条件的元素并组成数组，callbackfn参数为element, index, array
+
+var a = [1, 2, 3];
+a.filter(function(e) {return e > 2;}); // [3]
+```
 - Array.prototype.reduce(callbackfn[, initialValue])
+```
+遍历数组元素并进行处理，最后返回处理结果，callbackfn的参数为result（上一个元素处理返回的结果）, element, index, array
+
+var a = [1, 2, 3];
+a.reduce(function(r, e, i, a){return r+e;}, 1); // 7
+```
 - Array.prototype.reduceRight(callbackfn[, initialValue])
+```
+从右向左reduce
+```
 
 ### String Objects
 ##### Properties of the String Constructor

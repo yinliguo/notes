@@ -70,14 +70,14 @@
 /abc/.test('abc')
 ```
 #### string中使用正则表达式
-- search
+- search  
 > 返回第一个匹配的索引，没有的话返回-1
 
 ```
 var a = 'abcabc';
 a.search(/abc/); //返回0
 ```
-- match
+- match  
 > 返回匹配的文本数组，如果匹配不到则返回null
 
 ```
@@ -85,7 +85,7 @@ var b = 'abcabcd';
 b.match(/abc./g); //为什么只返回['abca']，却没有'abcd'？
 ```
 
-- replace
+- replace  
 > 替换匹配的文本
 
 ```
@@ -93,7 +93,7 @@ var b = 'aAbBcC';
 b.replace(/[A-Z]/g, function(word) {return word.toLowerCase()}); //b被替换为'aabbcc'
 ```
 
-- split
+- split  
 > 切割字符串
 
 ```

@@ -5,6 +5,7 @@
 
 ### 基本接口：Core Modules
 - Exception DOMException
+
 > DOM操作抛出的异常
 
 ```
@@ -28,6 +29,7 @@ WRONG_DOCUMENT_ERR: 4，如果一个节点在不是创建它的文档中使用
 ```
 
 - Interface DOMString
+
 > 提供了有序的DOMString值的集合的抽象，没有定义这个集合的实现。
 
 ```

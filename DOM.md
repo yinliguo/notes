@@ -4,3 +4,11 @@
 ![模块依赖图](https://raw.githubusercontent.com/yinliguo/notes/master/img/dom-architecture.png)
 
 ### 基本接口：Core Modules
+- Exception DOMException
+> DOM操作抛出的异常
+
+```
+// 如果指定的文本不能转换成DOMString
+DOMSTRING_SIZE_ERR
+// 
+```

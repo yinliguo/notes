@@ -133,7 +133,7 @@ renameNode(Node n, DOMString namespaceURI, DOMString qualifiedName): 重命名�
 
 - Interface Node
 
-> Node接口是整个文档对象模型的主要数据类型，它代表了文档树种的一个节点。
+> Node接口是整个文档对象模型的主要数据类型，它代表了文档树中的一个节点。
 
 ```
 属性
@@ -186,7 +186,7 @@ removeChild(Node oldChild): 删除子节点
 replaceChild(Node newChild, Node oldChild): 替换子节点
 setUserData(DOMString key, DOMUserData data, UserDataHandler handle): 把键值对关联到节点上
 ```
-![nodeName and nodeValue]({{site.baseurl}}/https://raw.githubusercontent.com/yinliguo/notes/master/img/nodeNameValue.png)
+![nodeName and nodeValue](https://raw.githubusercontent.com/yinliguo/notes/master/img/nodeNameValue.png)
 
 - Interface NodeList
 

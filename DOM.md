@@ -111,11 +111,25 @@ xmlStandalone(boolean): 作为XML文档声明的一部分，指定文档是否�
 xmlVersion(DOMString): 作为XML文档声明的一部分，指定了文档的版本号
 
 方法
-adoptNode(Node source): 从别的文档复制一个节点到该文档
+adoptNode(Node source): 从别的文档“过继”一个节点到该文档
 cerateAttribute(DOMString name): 创建一个名称为name的属性
 createAttributeNS(DOMString namespaceURI, DOMString name): 创建一个指定namespaceURI和name的属性
 createCDATASection(DOMString data): 创建一个值为data的CDATASection节点
 createComment(DOMString data): 创建一个指定字符串的注释节点
 createDocumentFragment: 创建一个空的DocumentFragment节点
 createElement(DOMString tagName): 创建一个指定类型的节点
+createElementNS(DOMString namespaceURI, DOMString qualifiedName): 创建一个指定namespace URI和qualified name的元素
+createEntityReference(DOMString name): 创建一个EntityReference对象
+createProcessingInstruction(DOMString target, DOMString data): 使用指定的名称和数据字符串创建一个ProcessingInstruction节点
+createTextNode(DOMString data)创建一个文本节点
+getElementById(DOMString elementId): 返回id为elementId的元素
+getElementsByTagName(DOMString tagname): 返回节点名称为tagname的元素组成的NodeList
+getElementsByTagNameNS(DOMString namespaceURI, DOMString localName): 返回指定namespaceURI和localName的元素组成的NodeList
+importNode(Node importedNode, boolean deep): 从别的文档复制一个节点到该文档。
+normalizeDocument: This method acts as if the document was going through a save and load cycle, putting the document in a "normal" form. As a consequence, this method updates the replacement tree of EntityReference nodes and normalizes Text nodes, as defined in the method Node.normalize().
+renameNode(Node n, DOMString namespaceURI, DOMString qualifiedName): 重命名元素节点或属性节点的名称
 ```
+
+- Interface Node
+
+> Node接口是整个文档对象模型的主要数据类型，它代表了文档树种的一个节点。

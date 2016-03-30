@@ -133,3 +133,34 @@ renameNode(Node n, DOMString namespaceURI, DOMString qualifiedName): 重命名�
 - Interface Node
 
 > Node接口是整个文档对象模型的主要数据类型，它代表了文档树种的一个节点。
+
+```
+属性
+attributes(namedNodeMap, readonly): 该节点的属性
+baseURI(DOMString, readonly): 节点的base URI。如果没有实现该属性，则为null
+childNodes(NodeList, readonly): 子节点
+firstChild(Node, readonly): 第一个子节点，如果没有就为null
+lastChild(Node, readonly): 最后一个子节点，如果没有就为null
+localName(DOMString, readonly): 节点的qualified name的local part
+namespaceURI(DOMString, readonly): 节点的namespaceURI，如果未指定则为null
+nextSibling(Node, readonly): 下一个兄弟元素，如果没有返回null
+nodeName(DOMString, readonly): 节点的名称见下表
+nodeType(unsigned short, readonly): 基本对象类型，如下：
+ATTRIBUTE_NODE: 2
+CDATA_SECTION_NODE: 4
+COMMENT_NODE: 8
+DOCUMENT_FRAGEMENT_NODE: 11
+DOCUMENT_NODE: 9
+DOCUMENT_TYPE_NODE: 10
+ELEMENT_NODE: 1
+ENTITY_NODE: 6
+ENTITY_REFERENCE_NODE: 5
+NOTATION_NODE: 12
+PROCESSING_INSTRUCTION_NODE: 7
+TEXT_NODE: 3
+nodeValue(DOMString): 节点的值，依赖节点类型，见下表
+ownerDocument(Document, readonly): Document对象，用于创建新节点
+parentNode(Document, readonly): 父节点
+prefix(DOMString): 
+```
+![nodeName and nodeValue]({{site.baseurl}}/https://raw.githubusercontent.com/yinliguo/notes/master/img/nodeNameValue.png)

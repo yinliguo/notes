@@ -251,7 +251,7 @@ value(DOMString): 当被取得时候，属性的值会被转换成字符串。
 
 - Interface Element
 
-> 代表了一个HTML或XML中的元素
+> 代表了一个HTML或XML中的元素，继承Node
 
 ```
 属性

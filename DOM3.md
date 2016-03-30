@@ -236,4 +236,97 @@ substringData(unsigned long offset, unsigned long count): 提取子字符串
 
 - Interface Attr
 
-> 代表元素对象的的一个属性
+> 代表元素对象的的一个属性，Attr对象继承Node接口，但由于它没有实际的节点，因此它的parentNode、previousSibling等都是null
+
+```
+属性
+isId(boolean, readonly): 是否是id属性
+name(DOMString, readonly): 属性的名称
+ownerElement(Element, readonly): 属性所在的元素的节点
+schemaTypeInfo(TypeInfo, readonly): 属性的类型信息
+specified(boolean, readonly): 如果属性的值是明确给出的，那么返回true
+value(DOMString): 当被取得时候，属性的值会被转换成字符串。
+```
+
+- Interface Element
+
+> 代表了一个HTML或XML中的元素
+
+```
+属性
+schemaTypeInfo(TypeInfo, readonly): 元素的类型信息
+tagName(DOMString, readonly): 元素的名称
+
+方法
+getAttribute(DOMString name): 获取属性的值
+getAttributesNS(DOMString namespaceURI, DOMString localName): 通过local name和namespace URI来获取属性值
+getAttributeNode(DOMString name): 通过名称获取属性节点
+getAttributeNodeNS(DOMString namespaceURI, DOMString localName): 同上
+getElementsByTagName(DOMString name): 返回所有标签名称为name的后代元素组成的NodeList
+getElementsByTagNameNS(DOMString namespaceURI, DOMString localName): 同上
+hasAttribute(DOMString name): 是否有name属性
+hasAttributeNS(DOMString namespaceURI, DOMString localName): 同上
+removeAttribute(DOMString name): 通过name移除属性
+removeAttributeNS(DOMString namespaceURI, DOMString localName): 通过namespace URI和local name移除属性
+removeAttributeNode(Attr oldAttr): 移除属性节点
+setAttribute(DOMString name, DOMString value): 增加一个新的属性
+setAttributeNS(DOMString namespaceURI, DOMString qualifiedName, DOMString value): 同上
+setAttributeNode(Attr newAttr): 增加一个新的属性节点
+setAttributeNodeNS(Attr newAttr): 增加一个新的属性节点
+setIdAttribute(DOMString name, boolean isId): 如果isId是true，则把指定的属性声明为user-determined ID属性
+setAttributeNS(DOMString namespaceURI, DOMString localName, boolean isId): 同上
+setAttributeNode(Attr idAttr, boolean isId): 如果isId是true，则把指定属性声明为user-determined ID属性
+```
+
+- Interface Text
+
+> 继承CharacterData，代表元素或属性的文本内容
+
+```
+属性
+isElementContentWhitespace(boolean, readonly): 是否包含element content whitespace
+wholeText(DOMString, readonly): 返回文本节点的文本
+
+方法
+repalceWholeText(DOMString content): 替换当前节点和所有相邻文本节点的文本
+splitText(unsigned long offset): 把该节点分割成两个节点
+```
+
+- Interface Comment
+
+> 继承CharacterData，代表注释的内容
+
+- Interface TypeInfo
+
+> 代表了一个元素节点或属性节点的类型。
+
+```
+属性
+typeName(DOMString, readonly): 类型名称
+typeNamespace(DOMString): 类型的命名空间
+
+方法
+isDerivedForm(DOMString typeNamespaceArg, DOMString typeNameArg, unsigned long derivationMethod): This method returns if there is a derivation between the reference type definition
+```
+
+- Interface UserDataHandler
+
+> 节点对象操作的接口
+
+```
+方法
+handle(unsigned short operation, DOMString key, DOMUserData data, Node src, Node dst): 用于节点被导出或克隆时调用
+```
+
+- Interface DOMError
+
+> 描述错误的接口
+
+```
+属性
+location(DOMLocator, readonly): 错误的位置
+message(DOMString, readonly): 描述错误信息的字符串
+relateData(DOMObject, readonly): 相关的DOMError.type依赖数据
+severity(unsigned short, readonly): 严重程度。可选值有SEVERITY_WARNING, SEVERITY_ERROR, SEVERITY_FATAL_ERROR
+type(DOMString, readonly): 标志哪种类型的related data是relatedData期待的
+```

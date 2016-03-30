@@ -161,6 +161,79 @@ TEXT_NODE: 3
 nodeValue(DOMString): 节点的值，依赖节点类型，见下表
 ownerDocument(Document, readonly): Document对象，用于创建新节点
 parentNode(Document, readonly): 父节点
-prefix(DOMString): 
+prefix(DOMString): 节点的命名空间前缀
+previousSibling(Node, readonly): 前面的兄弟元素，如果没有返回null
+textContent(DOMString): 返回该节点和后代节点的文本内容
+
+方法
+appendChild(Node newChild): 增加新的节点到该子节点的最后
+cloneNode(boolean deep): 克隆节点，如果deep为true则克隆整个DOM树
+copareDocumentPosition(Node other): 比较两个节点的位置关系
+getFeature(DOMString feature, DOMString version): 返回实现了指定的功能和版本的APIS的对象（没看懂）
+getUserData(DOMString key): 获取关联到该节点的key对应的值
+hasAttributes: 该节点是否有属性
+hasChildNodes: 该节点是否有子节点
+insertBefore(Node newChild, Node refChild): 把newChild插入到子节点refChild之前。如果没有refChild则插入到子节点的最后
+isDefaultNamespace(namespaceURI): 检测指定的namespaceURI是否是默认的命名空间
+isEqualNode(Node arg): 测试两个节点是否相等
+isSameNode(Node other): 测试两个节点是否相同
+isSupported(DOMString feature, DOMString version): 测试DOM实现是否支持该节点的feature特性
+lookupNameSpaceURI(DOMString prefix): 查找与给出的前缀相关联的namespace URI
+lookupPrefix(namespaceURI): 查找与namespace URI相关联的前缀
+normalize: （看不懂官方解释）
+removeChild(Node oldChild): 删除子节点
+replaceChild(Node newChild, Node oldChild): 替换子节点
+setUserData(DOMString key, DOMUserData data, UserDataHandler handle): 把键值对关联到节点上
 ```
 ![nodeName and nodeValue]({{site.baseurl}}/https://raw.githubusercontent.com/yinliguo/notes/master/img/nodeNameValue.png)
+
+- Interface NodeList
+
+> 提供了有序节点集合的抽象
+
+```
+属性
+length: 集合长度
+
+方法
+item(index): 返回第index元素
+```
+
+- Interface NamedNodeMap
+
+> 实现了NamedNodeMap接口的对象用于表示可以通过名称访问节点的集合。注意NamedNodeMap不继承NodeList，元素没有特别的顺序
+
+```
+属性
+length: 集合长度
+
+方法
+getNamedItem(DOMString name): 通过名称查找节点
+getNamedItemNS(DOMString namespaceURI, DOMString name): 通过namespaceURI和local name查找节点
+item(index): 返回第index个节点
+removeNamedItem(name): 通过名称移除节点
+removeNamedItemNS(DOMString namespaceURI, DOMString localName): 移除指定namespaceURI和local name的节点
+setNamedItem(Node arg): 使用nodeName属性增加一个节点
+setNamedItemNS(Node arg): 使用namespaceURI和localName增加一个节点
+```
+
+- Interface CharacterData
+
+> 扩展了一套属性和方法用于访问DOM中的字符数据
+
+```
+属性
+data(DOMString): 节点的字符数据
+length: 长度
+
+方法
+appendData(DOMString arg): 增加到节点的字符数据后面
+deleteData(unsigned long offset, unsigned long count): 移除字符数据
+insertData(unsigned long offset, DOMString arg): 插入字符数据
+replaceData(unsigned long offset, unsigned long count, DOMString arg): 替换字符数据
+substringData(unsigned long offset, unsigned long count): 提取子字符串
+```
+
+- Interface Attr
+
+> 代表元素对象的的一个属性

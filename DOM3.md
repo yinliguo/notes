@@ -330,3 +330,39 @@ relateData(DOMObject, readonly): 相关的DOMError.type依赖数据
 severity(unsigned short, readonly): 严重程度。可选值有SEVERITY_WARNING, SEVERITY_ERROR, SEVERITY_FATAL_ERROR
 type(DOMString, readonly): 标志哪种类型的related data是relatedData期待的
 ```
+
+- Interface DOMErrorHandler
+
+> 这是一个发生错误时的回调函数接口
+
+```
+方法
+handleError(DOMError error): 当错误发生时调用该函数
+```
+
+- Interface DOMLocator
+
+> 描述位置的接口
+
+```
+byteOffset(long, readonly): 输入源的字符偏移
+columnNumber(long, readonly): locator指向的列数
+lineNumber(long, readonly): locator指向的行数
+relatedNode(Node, readonly): locator指向的节点
+uri(DOMString, readonly): locator指向的URI
+utf16Offset(long, readonly): 
+```
+
+- Interface DOMConfiguration
+
+> The DOMConfiguration interface represents the configuration of a document and maintains a table of recognized parameters
+
+```
+属性
+parameterNames(DOMStringList, readonly): DOMConfiguration对象支持的参数列表，至少有一个值可以被修改
+
+方法
+canSetParameter(DOMString name, DOMUserData value): 检测是否支持设置一个参数的值
+getParameter(DOMString name): 获取参数的值
+setParameter(DOMString name, DOMUserData value): 设置参数的值
+```

@@ -37,8 +37,8 @@ WRONG_DOCUMENT_ERR: 4，如果一个节点在不是创建它的文档中使用
 length: 这个DOMString的list的长度
 
 方法
-contains: 测试一个字符串是否是DOMStringList的一部分
-item: 返回第index个元素。如果参数超出了索引最大值，则返回null
+contains(DOMString str): 测试一个字符串是否是DOMStringList的一部分
+item(unsigned long index): 返回第index个元素。如果参数超出了索引最大值，则返回null
 ```
 
 - Interface NameList
@@ -49,7 +49,46 @@ item: 返回第index个元素。如果参数超出了索引最大值，则返回
 length: name和namespaceURI的list的长度
 
 方法
-contains: 测试一个name是否是NameList的一部分
-containsNS: 测试namespaceURI/name是否是NameList的一部分
-getName: 返回第index
+contains(DOMString str): 测试一个name是否是NameList的一部分
+containsNS(DOMString namespaceURI, DOMString name): 测试namespaceURI/name是否是NameList的一部分
+getName(unsigned long index): 返回第index个name元素
+getNamespaceURI(index): 返回第index个namespaceURI元素
 ```
+
+- Interface DOMImplementationList
+
+> 提供了有序的DOM implementation的集合的抽象，但没有定义和约束如何实现
+
+```
+属性
+length: 集合的长度
+
+方法
+item(index): 第index个元素
+```
+
+- Interface DOMImplementationSource
+
+> This interface permits a DOM implementer to supply one or more implementations, based upon > > > requested features and versions, as specified in DOM Features. Each implemented > > > > > > > > > DOMImplementationSource object is listed in the binding-specific list of available sources so > > that its DOMImplementation objects are made available.
+
+```
+方法
+getDOMImplementation(features of type DOMString): 请求支持指定特定的第一个DOM实现
+getDOMImpletationList(features of type DOMString): 与上面的方法相同，只不过返回的是一个list列表
+```
+
+- Interface DOMImplementation
+
+> 提供了一些独立于文档对象模型的操作
+
+```
+方法
+createDocument(DOMString namespaceURI, DOMString qualified, DocumentType doctype): 创建一个指定类型的文档对象
+createDocumentType(DOMString qualifiedName, DOMString publicId, DOMString systemId): 创建一个空的DocumentType节点
+getFeature(DOMString feature, DOMString version): 返回一个实现了指定功能和版本的APIS的对象
+hasFeature(DOMString feature, DOMString version): 检测DOM实现是否实现了指定的功能和版本
+```
+
+- Interface DocumentFragment
+
+> 是一个“轻量级”的文档对象

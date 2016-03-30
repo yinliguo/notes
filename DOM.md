@@ -92,3 +92,30 @@ hasFeature(DOMString feature, DOMString version): 检测DOM实现是否实现了
 - Interface DocumentFragment
 
 > 是一个“轻量级”的文档对象
+
+- Interface Document
+
+> Document接口代表了整个的HTML或XML文档。概念上来说，它是文档树的根，是访问文档数据的主要权限
+
+```
+属性
+doctype(DocumentType, readonly): 文档类型声明
+documentElement(Element, readonly): 这是一个方便的属性用于访问文档的子节点元素
+documentURI(DOMString): 文档的位置
+domConfig(DOMConfiguration): 用于Doucment.normalizeDocument()的配置
+implementation(DOMImplementation, readonly): 操作文档的DOMImplementation对象。一个DOM程序可能用多种实现的对象
+inputEncoding(DOMString, readonly): 指定文档解析时的编码。当未知时，这个属性为null，例如在内存中创建对象
+strictErrorChecking(boolean): 指定强制或不强制错误检查
+xmlEncoding(DOMString, readonly): XML文档编码
+xmlStandalone(boolean): 作为XML文档声明的一部分，指定文档是否是独立的，未指定时为false
+xmlVersion(DOMString): 作为XML文档声明的一部分，指定了文档的版本号
+
+方法
+adoptNode(Node source): 从别的文档复制一个节点到该文档
+cerateAttribute(DOMString name): 创建一个名称为name的属性
+createAttributeNS(DOMString namespaceURI, DOMString name): 创建一个指定namespaceURI和name的属性
+createCDATASection(DOMString data): 创建一个值为data的CDATASection节点
+createComment(DOMString data): 创建一个指定字符串的注释节点
+createDocumentFragment: 创建一个空的DocumentFragment节点
+createElement(DOMString tagName): 创建一个指定类型的节点
+```

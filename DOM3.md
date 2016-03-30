@@ -70,7 +70,7 @@ item(index): 第index个元素
 
 - Interface DOMImplementationSource
 
-> This interface permits a DOM implementer to supply one or more implementations, based upon > > > requested features and versions, as specified in DOM Features. Each implemented > > > > > > > > > DOMImplementationSource object is listed in the binding-specific list of available sources so > > that its DOMImplementation objects are made available.
+> This interface permits a DOM implementer to supply one or more implementations, based upon  requested features and versions, as specified in DOM Features. Each implemented  DOMImplementationSource object is listed in the binding-specific list of available sources so  that its DOMImplementation objects are made available.
 
 ```
 方法

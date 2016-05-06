@@ -43,4 +43,8 @@ margin属性是box的margin area的宽度，是4条边的缩写属性。
 - 创建了一个新的block formatting context的元素的margins不会collapse（例如floats和overflow属性不是visible的元素）
 - aboslutely positioned boxes的margins不会collapse（甚至和它们的第一个in-flow子元素也不会）
 - inline-block boxes的margins不会collapse（甚至和它们的第一个in-flow子元素也不会）
-- in-flow block-level元素的bottom margin总是和它下一个in-flow block-level兄弟元素的top margin collapse，除非这个兄弟元素有clear属性
+- in-flow block-level元素的bottom margin总是和它下一个in-flow block-level兄弟元素的top margin collapse，除非这个兄弟元素有clear属性（即时加了clear这个在chrome和firefox上仍然collapse）
+- 如果一个in-flow block元素没有top border和top padding，并且它的第一个in-flow子元素没有clearance，那么它的top margin和子元素的top margin会collapse
+- 如果一个in-flow block元素没有bottom padding和bottom border、height属性为auto、min-height为0，并且它的最后一个in-flow block-level子元素的bottom margin没有和带有clearance的top margin collapse，那么它的bottom margin和这个子元素的bottom margin会collapse
+- 如果一个box的min-height为0、没有top border/bottom border/top padding/bottom padding、height为0或auto、不包含一个line box并且它所有的in-flow子元素的margins都collapse，那么它自己的margins会collapse（在chrome和firefox中也无效）
+

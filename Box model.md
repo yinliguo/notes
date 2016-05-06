@@ -25,6 +25,5 @@ margin属性是box的margin area的宽度，是4条边的缩写属性。
 
 注意：水平的margin不会collapse，只有相邻的垂直的margin才会collapse，除了以下两种情况
 - 根元素（html）的margin不会collapse
-- 
 
 

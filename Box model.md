@@ -35,4 +35,13 @@ margin属性是box的margin area的宽度，是4条边的缩写属性。
     - 一个box的bottom margin和它的下一个in-flow兄弟元素的top margin
     - 最后一个in-flow子元素的bottom margin和它的父元素的bottom margin并且这个父元素的height是auto
     - 一个box没有创建新的block formatting context、它的min-height是0，height是0或auto并且没有in-flow子元素，它的top margin和bottom margin
+    
+> 如果collapsed margin的任何一个component margin与另一个margin相邻，就认为这个collapsed margin和这个margin相邻
+
+上面的规则暗示：
+- 在floated box和其它任意box之间的margins不会collapse（甚至floated box和它的第一个in-flow子元素也不会）
+- 创建了一个新的block formatting context的元素的margins不会collapse（例如floats和overflow属性不是visible的元素）
+- aboslutely positioned boxes的margins不会collapse（甚至和它们的第一个in-flow子元素也不会）
+- inline-block boxes的margins不会collapse（甚至和它们的第一个in-flow子元素也不会）
+- in-flow block-level元素的bottom margin总是和它下一个in-flow block-level兄弟元素的top margin collapse，除非这个兄弟元素有clear属性
 

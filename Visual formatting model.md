@@ -1,3 +1,17 @@
 ## Visual formatting model
 
+> visual formatting model：how user agents process the document tree for visual media.（用户代理如何为可视化媒体处理文档树）
+
+
+在visual formatting model中，文档树中的每个元素按照box model生成0个或多个box，这些box的布局由以下因素影响
+- box的尺寸和类型
+- positioning scheme（normal flow、float、absolute positioning）
+- 文档树的元素之间的关系
+- 其它，比如viewport size、images固有的尺寸等
+
+visual formatting model没有定义所有方面（比如字符间距算法），不同的用户代理可能会有不同的实现方式
+
+#### The viewport
+> continuous media（braille、screen、speech、tty都属于该类型媒体）的用户代理通常提供一个viewport属性，当viewport改变时，用户代理可能会改变文档的布局。如果viewport比文档渲染的画布区域小时，用户代理应该提供一个滚动条。每个画布最多有一个viewport，但是用户代理可能渲染多个画布（例如，提供一个文档的不同views）
+
 

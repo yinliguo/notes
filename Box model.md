@@ -44,4 +44,3 @@ margin属性是box的margin area的宽度，是4条边的缩写属性。
 - aboslutely positioned boxes的margins不会collapse（甚至和它们的第一个in-flow子元素也不会）
 - inline-block boxes的margins不会collapse（甚至和它们的第一个in-flow子元素也不会）
 - in-flow block-level元素的bottom margin总是和它下一个in-flow block-level兄弟元素的top margin collapse，除非这个兄弟元素有clear属性
-

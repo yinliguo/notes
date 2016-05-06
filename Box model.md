@@ -6,10 +6,10 @@
 每一个box都有一个content area和可选的padding、border、margin。如下图所示：
 ![box尺寸](https://raw.githubusercontent.com/yinliguo/notes/master/img/boxdim.png)
 
-content area的尺寸依赖以下几个因素：
+content area的尺寸依赖以下几个因素，具体计算方式在visual formatting model中讨论
 - 元素生成的box是否设置了width和height属性
 - box是否包含text或其他的box
 - box是否是table
-- 其它。
-具体计算方式在visual formatting model中讨论
+- ......
+
 

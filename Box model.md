@@ -25,5 +25,14 @@ margin属性是box的margin area的宽度，是4条边的缩写属性。
 
 注意：水平的margin不会collapse，只有相邻的垂直的margin才会collapse，除了以下两种情况
 - 根元素（html）的margin不会collapse
+- If the top and bottom margins of an element with clearance are adjoining, its margins collapse with the adjoining margins of following siblings but that resulting margin does not collapse with the bottom margin of the parent block.(没看懂)
 
+两个margin相邻必须满足以下条件：
+- 都属于同一个block formatting context的block-level boxes
+- 没有line boxes、clearance、padding或border分开它们
+- 都属于垂直相邻的box边界，例如：
+	- 一个box的top margin和它的第一个in-flow子元素的top margin
+    - 一个box的bottom margin和它的下一个in-flow兄弟元素的top margin
+    - 最后一个in-flow子元素的bottom margin和它的父元素的bottom margin并且这个父元素的height是auto
+    - 一个box没有创建新的block formatting context、它的min-height是0，height是0或auto并且没有in-flow子元素，它的top margin和bottom margin
 

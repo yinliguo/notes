@@ -48,3 +48,28 @@ margin属性是box的margin area的宽度，是4条边的缩写属性。
 - 如果一个in-flow block元素没有bottom padding和bottom border、height属性为auto、min-height为0，并且它的最后一个in-flow block-level子元素的bottom margin没有和带有clearance的top margin collapse，那么它的bottom margin和这个子元素的bottom margin会collapse
 - 如果一个box的min-height为0、没有top border/bottom border/top padding/bottom padding、height为0或auto、不包含一个line box并且它所有的in-flow子元素的margins都collapse，那么它自己的margins会collapse（在chrome和firefox中也无效）
 
+> 当有两个甚至更多的margins进行collapse时，结果是最大的margin width。如果有负值margin，就让（最大的正margin值） -（最大的负margin值的绝对值）。如果没有正margin值，就是0 - （最大负margin值的绝对值）
+
+> If the top and bottom margins of a box are adjoining, then it is possible for margins to collapse through it. In this case, the position of the element depends on its relationship with the other elements whose margins are being collapsed.（没看懂）
+
+### Padding属性
+padding属性是box的padding area的宽度，是4条边的缩写属性。
+- 值可以为固定值或百分比，百分比是相对于containing block
+- 初始值为0
+- 非继承属性
+
+### Border属性
+padding属性是box的padding area的宽度、颜色和样式，是4条边的缩写属性。
+
+border-width
+- 值可以为固定值
+- 初始值为medium
+- 非继承属性
+
+border-color
+- 值为color|transparent|inherit
+- 非继承属性
+
+border-style
+- 值为border-style|inherit
+- 非继承属性

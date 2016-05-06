@@ -41,8 +41,7 @@ Anonymous block boxes：如果一个block container box里面有一个block-leve
 <HEAD>
 <TITLE>Anonymous text interrupted by a block</TITLE>
 <style>
-	
-p    { display: inline; border: 1px solid #000; background: #ddd}
+p { display: inline; border: 1px solid #000; background: #ddd}
 span { display: block }
 </style>
 </HEAD>
@@ -60,5 +59,6 @@ inline-level elements：those elements of the source document that do not form n
 
 inline-level box：is both inline-level and whose contents participate in its containing inline formatting context。一个display属性为inline的non-replaced元素生成一个inline box。不是inline boxes的inline-level boxes被称为atomic inline-level boxes，因为它们作为一个单独的不透明的box参加inline formatting context。 
 
+Anonymous inline boxes：任何文本直接被包含在一个block container元素中（并非inline元素中），都会被当做匿名inline元素。匿名的inline box从它的父block box继承属性
 
-
+##### Run-in boxes

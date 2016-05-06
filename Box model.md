@@ -4,8 +4,6 @@
 
 ### Box dimensions（盒子尺寸）
 每一个盒子都有一个content area和可选的padding、border、margin。如下图所示：
-
-
 ![盒子尺寸](https://raw.githubusercontent.com/yinliguo/notes/master/img/boxdim.png)
 
 

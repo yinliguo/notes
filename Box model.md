@@ -7,9 +7,9 @@
 ![box尺寸](https://raw.githubusercontent.com/yinliguo/notes/master/img/boxdim.png)
 
 content area的尺寸依赖以下几个因素：
-1.元素生成的box是否设置了width和height属性
-2.box是否包含text或其他的box
-3.box是否是table
-4.其它。
+- 元素生成的box是否设置了width和height属性
+- box是否包含text或其他的box
+- box是否是table
+- 其它。
 具体计算方式在visual formatting model中讨论
 

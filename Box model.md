@@ -12,4 +12,18 @@ content area的尺寸依赖以下几个因素，具体计算方式在visual form
 - box是否是table
 - ......
 
+content、padding和border的背景由background属性指定，margin的背景是透明的
+
+### margin属性
+margin属性是box的margin area的宽度，是4条边的缩写属性。
+- 值可以为***固定值***或***百分比***，百分比是相对于containing block
+- 初始值为0
+- 非继承属性
+
+##### Collapsing margin（外边距塌陷）
+> 在CSS中，两个或多个box（不一定是兄弟元素）的相邻的margins会结合成一个margin。margins通过这种方式结合叫做collapse（塌陷），最终得到的结合的margin叫做collapsed margin。
+
+***水平的margin不会collapse，只有相邻的垂直的margin才会collapse，除了以下两种情况***
+- 
+
 

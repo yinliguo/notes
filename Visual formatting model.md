@@ -179,9 +179,9 @@ fixed positioning是absolute positioning的子范畴，唯一的区别就是对�
 |   Specified value                          |  Computed value    |
 |--------------------------------------------|-------------------:|
 |inline-table                                |table               |
-|inline,table-row-group,table-column,        |block               |
-|table-column-group,table-header-group,
-|table-footer-group,table-row,table-cell,
+|inline,table-row-group,table-column, <br>   |block               |
+|table-column-group,table-header-group,<br>  |                    |
+|table-footer-group,table-row,table-cell,<br>|                    |
 |table-caption,inline-block
 |
 

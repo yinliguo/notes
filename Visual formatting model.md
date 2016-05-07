@@ -177,13 +177,13 @@ fixed positioning是absolute positioning的子范畴，唯一的区别就是对�
 5.display属性按照指定的生效
 
 Specified value                        Computed value  
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-inline-table                               table
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-inline,table-row-group,table-column,       block
-table-column-group,table-header-group,
-table-footer-group,table-row,table-cell,
-table-caption,inline-block
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-others                                      same as specified
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++  
+inline-table                               table  
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++  
+inline,table-row-group,table-column,       block  
+table-column-group,table-header-group,  
+table-footer-group,table-row,table-cell,  
+table-caption,inline-block  
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++  
+others                                      same as specified  
 

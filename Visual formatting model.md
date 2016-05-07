@@ -88,12 +88,39 @@ position属性
 > 在normal flow中的boxes属于一个formatting context（可能是block或inline，但不可能同时是两者）。block-level boxes参加block formatting context，inline-level boxes参加inline formatting context。
 
 ##### Block formatting contexts
-> Floats、absolutely positioned元素、不是block boxes的block containers（例如inline-blocks、table-cells和table-captions）和overflow属性不是visible（except when that value has been propagated to the viewport）的block boxes会为它们的contents创建新的block formatting contexts
+Floats、absolutely positioned元素、不是block boxes的block containers（例如inline-blocks、table-cells和table-captions）和overflow属性不是visible（except when that value has been propagated to the viewport）的block boxes会为它们的contents创建新的block formatting contexts
 
 在一个block formatting context中，boxes从containing block的顶部开始，在垂直方向一个接一个的布局。两个兄弟boxes之间的垂直距离由margin决定。在同一个block formatting context中相邻的block-level boxes的垂直margin会collapse。
 
 在一个block formatting context中，每个box的左外边界挨着containing block的左边界（对于right-to-left formatting，正好相反）。即时在floats中也是一样，除非这个box新建了一个block formatting context。
 
 ##### Inline formatting contexts
-> 
+在一个inline formatting context中，boxes从containing block的顶部开始，按水平方向一个接一个的布局。这些boxes在垂直方向可能有不同的对齐方式：按顶部或底部对齐，或者按文字的baselines对齐。包含这些组成一条线的boxes的矩形区域被称为line box。
 
+line box的宽度由containing block和floats的表现决定，高度由line-height和vertical-align决定。
+
+一个line box对于它所包含的boxes来说总是足够高。当一个在line box中的box比line box低时，它的垂直对齐方式由vertical-align属性决定。当几个inline-level boxes在一个line box的水平方向排不下时，它们会被分发到两个或多个vertical-stacked line boxes（垂直方向上产生多个line box来容纳这些inline-level boxes，就像栈一样）。因此，一个段落就是一个vertical-stack of line boxes。line boxes不会重叠
+
+通常情况下，line box的左边缘挨着containing block的左边缘，右边缘挨着containing block的右边缘。但是floating boxes可能会在containing block和line box之间，因此，line box的宽度可能会由于floats而缩小。在同一个inline formatting context中的line boxes的高度通常不一致，比如有些只包含文本，有些包含一个很高的图片。
+
+当一条线上的inline-level boxes的总宽度小于line box的宽度时，它们在水平方向的分布由text-align属性决定。如果这个属性的值是justify，用户代理会在inline boxes中拉伸字和空间（在inline-table和inline-block boxes中不会）。
+
+当一个inline box超过了line box的宽度，它会被分割成几个boxes并且这些boxes沿着几个line boxes排布。如果一个inline box不能被分割（比如包含了一个单独的字符，或不允许break的单词，或者这个inline box被一个nowrap或pre的white-space影响），那么inline box会从line box中溢出。
+
+当一个inline box被分割了，margins、borders和padding在分割的地方不会受影响。
+
+inline boxes可能会因为bidirectional text processing（有些脚本中字符会从右往左写）虽然被分割成几个boxes，但仍在同一个line box中。
+
+line box被创建是为了保持inline-level content在一个inline formatting context中。不包含文本、preserved white space、非零margins/paddings/borders的inline元素、其它的in-flow content（例如图片、inline blocks或inline tables），并且不是以preserved newline结尾的line boxes必须作为零高line box对待，目的是决定line boxes中的任何元素的位置。对于其他的目的来说，这些line boxes不存在。
+
+##### Relative positioning
+一旦box按照normal flow或floated进行布局，它就可能相对于这个位置挪，这叫做relative positioning。但是跟在挪动的box后面的box不会进行位置挪动，这就意味着relative positioning可能会引起boxes之间的重叠。如果引起了overflow属性是auto或scroll的box中的内容溢出了，用户代理必须允许用户访问这部分内容，而且由于滚动条的创建，可能会影响布局。
+
+一个relatively positioned box保持它的normal flow size不变，包括line breaks和原来的空间。
+
+### Floats
+float就是一个box被挪动到当前line的左边或右边，直到挨上containing block或另一个float的外边缘。
+
+如果没有足够的水平空间放float，它就会向下挪动直到能放下它或者没有其他的float。
+
+因为float不在flow中，所以non-positioned block boxes在float box flow的垂直方向的前后被创建，就好像这个float不存在一样。但是，挨着float被创建的当前和随后的line boxes按需要被截短以保证float的margin box有足够的空间（没看懂）

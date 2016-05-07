@@ -124,3 +124,64 @@ float就是一个box被挪动到当前line的左边或右边，直到挨上conta
 如果没有足够的水平空间放float，它就会向下挪动直到能放下它或者没有其他的float。
 
 因为float不在flow中，所以non-positioned block boxes在float box flow的垂直方向的前后被创建，就好像这个float不存在一样。但是，挨着float被创建的当前和随后的line boxes按需要被截短以保证float的margin box有足够的空间（没看懂）
+
+一个line box挨着一个float：存在一个垂直的的位置满足一下四个条件（没看懂）
+- 在line box的顶部或其下方
+- 在line box的底部或其上方
+- 在float的top margin edge下方
+- 在float的bottom margin edge上方
+
+> 这意味着outer height为0或负值的floats不会缩短line boxes
+
+如果一个被截短的line box太小容不下任何content，那么这个line box会向下挪动（它的宽度重新计算）直到能够容纳一些content或者不再有float。在一个floated box之前的current line中的content会在float另一边的同一条line中被reflowed。换句话说，如果inline-level boxes被放到左float之前，并且float可以在同一条line中摆放，那么这个inline-level boxes会被移动到这个float的右边，反之同理。示例代码如下
+```
+<div>
+	<span style="display: inline-block; width: 200px;height: 20px; background: green;"></span>
+	<div style="width: 500px; height: 30px; background: red; float: left;"></div>
+</div>
+```
+
+table的border box、block-level replaced元素和在normal flow中创建了一个新的block formatting context的元素（例如一个overflow属性不为visible的元素）绝不会与在同一个block formatting context中的floats的margin box重叠。如果有必要，实现应该把上面提到的元素放到floats的下面，但是如果有足够的空间，可能会把它放到与floats相邻的位置。甚至使上面提及的元素的border box比定义的更窄。代码示例如下
+```
+p { width: 10em; border: solid aqua; }
+span { float: left; width: 5em; height: 5em; border: solid blue; }
+
+...
+
+<p>
+  <span> </span>
+  Supercalifragilisticexpialidocious
+</p>
+```
+
+float属性：指定了一个box应该向左还是向右浮动，或者不浮动。适用于不是absolutely positioned的元素
+
+clear属性：标志元素的box的哪一边不能挨着之前的floating box。clear属性不考虑在该元素里面的的floats和在其他block formatting contexts中的floats。
+
+### Absolute positioning
+在absolute positioning model中，一个box很明确地相对于它的containing block偏移。它被从normal flow中整个移除（对后面的兄弟元素没有影响）。一个absolutely positioned box为normal flow子元素和absolutely（但不是fixed）positioned后代创建了一个新的containing block。
+
+However, the contents of an absolutely positioned element do not flow around any other boxes. They may obscure the contents of another box (or be obscured themselves), depending on the stack levels of the overlapping boxes.（没看懂）
+
+absolutely positioned元素的position属性是absolute或fixed。
+
+##### Fixed position
+fixed positioning是absolute positioning的子范畴，唯一的区别就是对于一个fixed positioned box而言，containing block由viewport创建。对于continuous media来说，当文档滚动时，fixed box不会移动
+
+### Relationships between 'display', 'position', and 'float'
+这三个属性按照以下顺序相互影响
+1.如果display的值为none，那么position和float都无效，元素也不会生成box
+2.如果position的值为absolute或fixed，这个box是absolutely positioned，float的值为none，display的值按照下面的表格进行设定。box的位置由top、right、bottom、left和containing block决定
+3.如果float的值部位none，box会浮动并且display的值按照下面的表格进行设定
+4.如果是根元素，display按照下面的表格设定（在CSS 2.1中，没有规定list-item值是否会变成一个block或list-item）
+5.display属性按照指定的生效
+
+|   Specified value                          |  Computed value    |
+|--------------------------------------------|-------------------:|
+|inline-table                                |table               |
+|inline,table-row-group,table-column,        |block               |
+|table-column-group,table-header-group,
+|table-footer-group,table-row,table-cell,
+|table-caption,inline-block
+|
+

@@ -170,11 +170,11 @@ fixed positioning是absolute positioning的子范畴，唯一的区别就是对�
 
 ### Relationships between 'display', 'position', and 'float'
 这三个属性按照以下顺序相互影响
-1.如果display的值为none，那么position和float都无效，元素也不会生成box
-2.如果position的值为absolute或fixed，这个box是absolutely positioned，float的值为none，display的值按照下面的表格进行设定。box的位置由top、right、bottom、left和containing block决定
-3.如果float的值部位none，box会浮动并且display的值按照下面的表格进行设定
-4.如果是根元素，display按照下面的表格设定（在CSS 2.1中，没有规定list-item值是否会变成一个block或list-item）
-5.display属性按照指定的生效
+- 如果display的值为none，那么position和float都无效，元素也不会生成box
+- 如果position的值为absolute或fixed，这个box是absolutely positioned，float的值为none，display的值按照下面的表格进行设定。box的位置由top、right、bottom、left和containing block决定
+- 如果float的值部位none，box会浮动并且display的值按照下面的表格进行设定
+- 如果是根元素，display按照下面的表格设定（在CSS 2.1中，没有规定list-item值是否会变成一个block或list-item）
+- display属性按照指定的生效
 
 Specified value                        (Computed value)  
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++  
@@ -187,3 +187,24 @@ table-caption,inline-block
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++  
 others                                      (same as specified)  
 
+### Layered presentation
+z-index属性：对于一个positioned box来说，该属性指定了：
+- 当前stacking context中的stack level
+- 这个box是否创建了一个stacking context
+
+The order in which the rendering tree is painted onto the canvas is described in terms of stacking contexts. Stacking contexts can contain further stacking contexts. A stacking context is atomic from the point of view of its parent stacking context; boxes in other stacking contexts may not come between any of its boxes.（渲染树绘制到画布上的顺序是在stacking context中描述的。stacking contexts能包含更深一层的stacking contexts。一个stacking context对于它的上一级stacking context来说是原子性的，不可分割的；其它的stacking contexts中的boxes不会到该stacking context中的boxes里）
+
+每一个box都属于一个stacking context。在一个给定的stacking context中的每一个positioned box都有一个整数的stack level，标志它相对于同一个stacking context中的其他boxes在Z轴的位置。stack level越大，就越在前面。stack level可能有负值。stack level相同的话就按照文档树中的顺序从后到前摆放。
+
+根元素组成了根stacking context。其它stacking contexts由positioned元素（包括relatively positioned元素，有z-index的computed值，但不是auto）生成。对于containing block来说，stacking contexts并不是必须的。
+
+在每个stacking context中，下面的层按照从后到前的顺序进行渲染
+- 1.组成stacking context元素的background和borders
+- 2.负值的stack levels的子stacking contexts（从小到大）
+- 3.in-flow、non-inline-level、non-positioned后代元素
+- 4.non-positioned floats
+- 5.in-flow、inline-level、non-positioned后代元素，包括inline tables和inline blocks
+- 6.stack level为0的子stacking context和stack level为0的positioned后代元素
+- 7.stack level为正数的子stacking contexts（从小到大）
+
+> 在每一个stacking context中，stack level 0的positioned元素（6）、non-positioned floats（4）、inline blocks（5）和inline tables（5）被绘制就好像这些元素自己生成了新的stacking context，除了它们的positioned后代和子stacking contexts。绘制的顺序是递归的。

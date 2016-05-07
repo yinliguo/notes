@@ -61,4 +61,39 @@ inline-level box：is both inline-level and whose contents participate in its co
 
 Anonymous inline boxes：任何文本直接被包含在一个block container元素中（并非inline元素中），都会被当做匿名inline元素。匿名的inline box从它的父block box继承属性
 
-##### Run-in boxes
+##### display属性
+- 值有inline、block、list-item、inline-block、table、inline-table、table-row-group、table-header-group、table-footer-group、table-row、table-column-group、table-column、talbe-cell、table-caption、none、inherit
+- 初始值inline
+
+
+### Postioning schemes
+> 在CSS 2.1中，一个box按照三中positioning schemes进行布局，如下
+
+- Normal flow：在CSS 2.1中，normal flow包括block-level boxes的block formatting、inline-level boxes的inline-formatting、block-level和inline-level boxes的reative positioning
+- Floats：在float model中，一个box首先按照normal flow进行布局，然后从flow中取出并挪动到最左端或最右端
+- Absolute positioning：在absolute positioning model中，一个box从normal flow中被整个移除（但不会对后面的兄弟元素有影响）并相遇于containing block分配一个位置
+
+> 如果一个元素是floated、absolutely positioned或者是根元素，那么这个元素被称为out of flow，否则就是in-flow。一个元素的flow是一个由该元素和所有in-flow元素（最近的out-of-flow父元素是该元素）的集合
+
+position属性
+- 值：static、relative、absolute、fixed、inherit
+	- static：box是一个normal box，按照normal flow布局。top、right、bottom、left属性不生效
+    - relative：box的位置按照normal flow进行计算，然后相对于它的正常的位置进行偏移。但对于table-row-group、table-cell等元素不生效
+    - absolute：box的位置由top、right、bottom、right指定，这些属性指定了相对于box的containing block的偏移量。absolutely positioned boxes被从normal flow中取出。这意味着它们不会对后面的兄弟元素的布局产生影响，同时尽管它们有margins，但是他们不和其它的margins进行collapse
+    fixed：box的位置按照absolute model进行计算，除此之外，box按照一些规则固定。因为是absolute model，所以box得margins不会collapse。在手持设备、屏幕、tty、projection、tv等媒体类型中，box相对于viewport固定，并且在滚动条滚动时时不会移动；在print媒体类型中，box在每一页都会渲染，并且相对于page box固定。对于其他媒体类型，没有定义。
+- 初始值：static
+- 非继承属性
+
+### Normal flow
+> 在normal flow中的boxes属于一个formatting context（可能是block或inline，但不可能同时是两者）。block-level boxes参加block formatting context，inline-level boxes参加inline formatting context。
+
+##### Block formatting contexts
+> Floats、absolutely positioned元素、不是block boxes的block containers（例如inline-blocks、table-cells和table-captions）和overflow属性不是visible（except when that value has been propagated to the viewport）的block boxes会为它们的contents创建新的block formatting contexts
+
+在一个block formatting context中，boxes从containing block的顶部开始，在垂直方向一个接一个的布局。两个兄弟boxes之间的垂直距离由margin决定。在同一个block formatting context中相邻的block-level boxes的垂直margin会collapse。
+
+在一个block formatting context中，每个box的左外边界挨着containing block的左边界（对于right-to-left formatting，正好相反）。即时在floats中也是一样，除非这个box新建了一个block formatting context。
+
+##### Inline formatting contexts
+> 
+

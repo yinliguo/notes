@@ -176,14 +176,14 @@ fixed positioning是absolute positioning的子范畴，唯一的区别就是对�
 4.如果是根元素，display按照下面的表格设定（在CSS 2.1中，没有规定list-item值是否会变成一个block或list-item）
 5.display属性按照指定的生效
 
-Specified value                        Computed value  
+Specified value                        (Computed value)  
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++  
-inline-table                               table  
+inline-table                               (table)  
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++  
-inline,table-row-group,table-column,       block  
+inline,table-row-group,table-column,       (block)  
 table-column-group,table-header-group,  
 table-footer-group,table-row,table-cell,  
 table-caption,inline-block  
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++  
-others                                      same as specified  
+others                                      (same as specified)  
 

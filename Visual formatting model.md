@@ -298,3 +298,5 @@ The order in which the rendering tree is painted onto the canvas is described in
 	</div>
 </BODY>
 ```
+
+> Since an element with opacity less than 1 is composited from a single offscreen image, content outside of it cannot be layered in z-order between pieces of content inside of it. For the same reason, implementations must create a new stacking context for any element with opacity less than 1. If an element with opacity less than 1 is not positioned, implementations must paint the layer it creates, within its parent stacking context, at the same stacking order that would be used if it were a positioned element with ‘z-index: 0’ and ‘opacity: 1’. If an element with opacity less than 1 is positioned, the ‘z-index’ property applies as described in [CSS21], except that ‘auto’ is treated as ‘0’ since a new stacking context is always created. See section 9.9 and Appendix E of [CSS21] for more information on stacking contexts. The rules in this paragraph do not apply to SVG elements, since SVG has its own rendering model ([SVG11], Chapter 3).（）

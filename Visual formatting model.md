@@ -463,4 +463,4 @@ height属性不生效。content area的高度应该基于字体，但是这个�
 
 垂直方向的padding、border和margin开始于content area的顶部和底部，并且和line-height没有关系。但是当计算line box的高度时只能用line-height。
 
-##### 2.normal flow中的inline replaced元素、block-level replaced元素、inline-block replaced元素和floating replaced元素
+##### 2.normal flow中的inline replaced元素、normal flow中的block-level replaced元素、normal flow中的inline-block replaced元素和floating replaced元素

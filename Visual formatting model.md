@@ -366,10 +366,10 @@ margin-left + border-left-width + padding-left + width + padding-right + border-
 
 如果margin-left和margin-right都是auto，那么他们的used values是相等的。这个元素相对于containing block居中。（也就是我们常用的margin: 0 auto）
 
-##### normal flow中的block-level replaced元素
+##### 4.normal flow中的block-level replaced元素
 width的used value跟inline replaced元素一样。margins跟non-replaced block-level元素一样。
 
-##### floating non-replaced元素
+##### 5.floating non-replaced元素
 如果margin-left或margin-right是auto，那么它们的used value是0
 
 如果width是auto，那么used value是一个可伸缩的width
@@ -378,10 +378,10 @@ width的used value跟inline replaced元素一样。margins跟non-replaced block-
 
 然后缩小并适应的宽度是：min(max(preferred minimum width, available width), preferred width)
 
-##### floating replaced元素
+##### 6.floating replaced元素
 如果margin-left或者margin-right是auto的computed value，那么used value是0。width的used value的计算方式跟inline replaced元素一样
 
-##### absolutely positioned non-replaced元素
+##### 7.absolutely positioned non-replaced元素
 - static-position containing block是一个假设的box的containing block。这个box是这个元素（如果它指定position属性的值为static，float属性的值为none）的第一个box。这个假设的计算可能需要为display属性声明一个不同的computed value。
 - left属性的static position是从containing block的左边缘到假设的box的left margin edge（这个假设的box是这个元素的第一个box，并且这个元素的position属性是static，float属性为none）。如果假设的box在containing block的左边，这个值就是负的。
 - right属性的static position是从containing block的right edge到这个假设的box的right margin edge。如果这个假设的box在containing block的左边，这个值是正的。
@@ -390,3 +390,75 @@ But rather than actually calculating the dimensions of that hypothetical box, us
 
 为了计算static position，fixed positioned元素的containing block代替viewpot称为initial containing block。and all scrollable boxes should be assumed to be scrolled to their origin.（没看懂）
 
+决定used value的约束如下：  
+left + margin-left + border-left-width + padding-left + width + padding-right + border-right-width + margin-right + right = containing block的width
+
+如果left、width、right的值都是auto，那么首先将值为auto的margin-left和margin-right的值设置为0，然后，如果创建了static-position的元素的direction属性是ltr，那么设置left to the static position，并且应用下面的第三条规则；否则设置right to the static position并应用第一条规则。
+
+如果left、width、right都不为auto的情况下，如果margin-left和margin-right都是auto，在两个margin相等的情况下解方程，除非它们是负的，在这种情况下当containing block的direction属性是ltr，设置margin-left为0并解出margin-right。如果margin-left和margin-right中有一个是auto，解出这个值。如果值是over-constrained，忽略这个值（如果containing block的direction为rtl，忽略left，否则忽略right）并解出这个值。
+
+否则，将margin-left和margin-right设置为0，并选择下面的一条规则。
+- 1.left和width是auto，right不是auto，那么width会收缩，然后解出left
+- 2.left和right是auto，width不是auto，如果元素（创建static-position containing block）的direction属性是ltr，就设置left to the static position，否则设置right to the static position。然后解出left或right
+- 3.width和right是auto，left不是auto，那么width会收缩，解出right
+- 4.left是auto，width和right不是auto，解出left
+- 5.width是auto，left和right不是auto，解出width
+- 6.right是auto，left和width不是auto，解出right
+
+收缩width是：min(max(preferred minimum width, available width), preferred width)
+
+##### 8.absolutely positioned replaced元素
+同上面一样，但规则如下
+- 1.width的used value和inline replaced元素一样。如果margin-left或margin-right指定为auto，它的used value由下面的规则决定
+- 2.如果left和right都是auto的情况下，如果元素（创建了static-position containing block）的direction属性为ltr，设置left to the static position；如果direction属性为rtl，设置right to the static position。
+- 3.如果left和right其中一个是auto，替换margin-left或margin-right的auto为0
+- 4.如果margin-left和margin-right仍然是auto，那么在两个margin必须相等的条件下解方程，除非它们是负值，在这种情况下，当containing block的direction是ltr，设置margin-left为0，然后解出margin-right，相反同理。
+- 5.如果left是auto，那么解出这个值
+- 6.如果值是over-constrained，忽略这个值（如果direction是rtl就忽略left，如果是ltr就忽略right）并解出这个值
+
+##### 9.normal flow中的inline-block non-replaced元素
+如果width是auto，那么它的used value是收缩width，就像floating元素
+
+margin-left和margin-right的auto的computed value变成0（used value）
+
+##### 10.normal flow中inline-block replaced元素
+同inline replaced元素
+
+### min-width和max-width
+这两个属性允许用户约束内容的宽度在一个特定的区域内。
+- 值为lenght、百分比、inherit。百分比是相对于containing block的宽度，不能为负值
+- min-width的初始值为0，max-width的初始值为none
+- 非继承属性
+
+在CSS 2.1中这两个属性对tables、inline tables、table cells、table columns、column groups是未定义的
+
+下面的算法描述了两个属性如何影响used value：
+- 1.不使用min-width和max-width来计算出width的一个临时的used value
+- 2.如果这个临时的值比max-width大，那么使用max-width作为width的computed value，利用上面的规则再计算一次。
+- 3.如果得到的width比min-width小，那么久使用min-width作为computed value再计算一次
+
+### height属性
+height属性指定了boxes的content height
+- 值为length、百分比、auto、inherit。百分比是相对于containing block
+- 初始值为auto
+- 非继承属性
+
+height对于non-replaced inline元素无效
+
+### calculating heights and margins
+计算不同类型的box的top、margin-top、height、margin-bottom和bottom是有区别的
+- 1.inline non-replaced元素
+- 2.inline replaced元素
+- 3.normal flow中的block-level non-replaced元素
+- 4.normal flow中的block-level replaced元素
+- 5.floating non-replaced元素
+- 6.floating replaced元素
+- 7.absolutely positioned non-replaced元素
+- 8.absolutely positioned replaced元素
+- 9.normal flow中的inline-block non-replaced元素
+- 10.normal flow中的inline-block replaced元素
+
+##### 1.inline non-replaced元素
+height属性不生效。content area的高度应该基于字体，但是这个规范中没有指定实现方式。例如，一个用户代理可能会用em-box或者字体的ascender and descender。
+
+垂直方向的padding、border和margin开始于content area的顶部和底部，并且和line-height没有关系。但是当计算line box的高度时只能用line-height。

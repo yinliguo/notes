@@ -358,5 +358,35 @@ margin-left或margin-right的值如果是auto就计算成0
 下面的约束必须hold在其他的属性的used values之间  
 margin-left + border-left-width + padding-left + width + padding-right + border-right-width + margin-right = containing block的width
 
+如果width不是auto并且border-left-width + padding-left + width + padding-right + border-right-width（加上不是auto的margin-left和margin-right）比containing block的宽度大，那么按照下面的规则，margin-left或margin-right的auto值都会当做0。
 
+如果上面所有的属性都有一个不为auto的computed value，这些值被称为over-constrained。它们的used values之中的一个将会不同于computed value。如果containing block的direction属性是ltr，那么margin-right的指定值被忽略并且值被计算so as to make the equality true。如果direction属性是rtl，那么margin-left的值也像上面那样处理。（没看懂）
+
+如果正好有一个值被指定为auto，its used value follows from the equality.(应该是自动填充剩余空间)
+
+如果margin-left和margin-right都是auto，那么他们的used values是相等的。这个元素相对于containing block居中。（也就是我们常用的margin: 0 auto）
+
+##### normal flow中的block-level replaced元素
+width的used value跟inline replaced元素一样。margins跟non-replaced block-level元素一样。
+
+##### floating non-replaced元素
+如果margin-left或margin-right是auto，那么它们的used value是0
+
+如果width是auto，那么used value是一个可伸缩的width
+
+可伸缩的width的计算类似于使用自动表格布局算法计算一个表格单元格的宽度。粗略地说，通过不打断lines格式化内容来计算preferred width，同时计算preferred最小宽度，例如通过尝试所有的line break。CSS 2.1不定义准确的算法。第三，找到可用的width：在这种情况下，containing block的width减去margin-left、border-left-width、padding-left、padding-right、border-right-width、margin-right的used value，和任何相关的滚动条的宽度
+
+然后缩小并适应的宽度是：min(max(preferred minimum width, available width), preferred width)
+
+##### floating replaced元素
+如果margin-left或者margin-right是auto的computed value，那么used value是0。width的used value的计算方式跟inline replaced元素一样
+
+##### absolutely positioned non-replaced元素
+- static-position containing block是一个假设的box的containing block。这个box是这个元素（如果它指定position属性的值为static，float属性的值为none）的第一个box。这个假设的计算可能需要为display属性声明一个不同的computed value。
+- left属性的static position是从containing block的左边缘到假设的box的left margin edge（这个假设的box是这个元素的第一个box，并且这个元素的position属性是static，float属性为none）。如果假设的box在containing block的左边，这个值就是负的。
+- right属性的static position是从containing block的right edge到这个假设的box的right margin edge。如果这个假设的box在containing block的左边，这个值是正的。
+
+But rather than actually calculating the dimensions of that hypothetical box, user agents are free to make a guess at its probable position.（没看懂）
+
+为了计算static position，fixed positioned元素的containing block代替viewpot称为initial containing block。and all scrollable boxes should be assumed to be scrolled to their origin.（没看懂）
 

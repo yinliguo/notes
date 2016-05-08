@@ -17,6 +17,22 @@ continuous media（braille、screen、speech、tty都属于该类型媒体）的
 #### Containing blocks
 很多box的位置和尺寸都是相对于一个叫containing block的矩形box计算的。一般而言，生成的box为它的子元素扮演着containing block的角色。每一个box的位置都是相对于containing block给出，但它并不局限于containing block，它可能会overflow（溢出）
 
+- 根元素所在containing block是一个叫initial containing block的矩形。对于continuous media而言，它拥有viewport的尺寸并且是在canvas origin中是固定的。它是paged media的页面区域。这个initial containing block的direction属性和根元素一致。
+- 对于其它元素而言，如果这个元素的position属性是relative或static，这个containing block由最近的block container父box的content边缘组成
+- 如果这个元素的position属性是fixed，那么在continuous media或paged media的paged area中，containing block由viewport创建
+- 如果元素的position为absolute，那么containing block由最近的position属性为absolute/relative/fixed的父元素创建，如果没有这样的父元素，containing block就是initial containing block
+	- 如果父元素是一个inline元素，containing block就是环绕这个元素生成的第一个和最后一个inline boxes的padding boxes的bounding box。如果这个inline元素沿着多条线被分割，那么这个containing block就是undefined
+    - 否则containing block由父元素的padding edge组成
+
+在paged media中，一个absolutely positioned元素会忽略page breaks（就像这个文档是连续的），相对于它的containing block定位。这个元素可能会在随后的几个页面中被打断。
+
+对于absolutely positioned content（在一个页面的位置，而不是正在布局的当前页面，或者解析解析成已经渲染或打印完成的当前页面的位置）而言，打印机可能按以下方式处理content：
+- 放到当前页的另一个位置
+- 放到随后的页面
+- 忽略它
+
+
+
 #### Controlling box generation（控制box的生成）
 ##### Block-level elements和block boxes
 block-level elements：源码文档中作为blocks被格式化的元素。以下display的属性使一个元素成为block-level，有block、list-item、table
@@ -299,4 +315,48 @@ The order in which the rendering tree is painted onto the canvas is described in
 </BODY>
 ```
 
-> Since an element with opacity less than 1 is composited from a single offscreen image, content outside of it cannot be layered in z-order between pieces of content inside of it. For the same reason, implementations must create a new stacking context for any element with opacity less than 1. If an element with opacity less than 1 is not positioned, implementations must paint the layer it creates, within its parent stacking context, at the same stacking order that would be used if it were a positioned element with ‘z-index: 0’ and ‘opacity: 1’. If an element with opacity less than 1 is positioned, the ‘z-index’ property applies as described in [CSS21], except that ‘auto’ is treated as ‘0’ since a new stacking context is always created. See section 9.9 and Appendix E of [CSS21] for more information on stacking contexts. The rules in this paragraph do not apply to SVG elements, since SVG has its own rendering model ([SVG11], Chapter 3).（）
+> Since an element with opacity less than 1 is composited from a single offscreen image, content outside of it cannot be layered in z-order between pieces of content inside of it. For the same reason, implementations must create a new stacking context for any element with opacity less than 1. If an element with opacity less than 1 is not positioned, implementations must paint the layer it creates, within its parent stacking context, at the same stacking order that would be used if it were a positioned element with ‘z-index: 0’ and ‘opacity: 1’. If an element with opacity less than 1 is positioned, the ‘z-index’ property applies as described in [CSS21], except that ‘auto’ is treated as ‘0’ since a new stacking context is always created. See section 9.9 and Appendix E of [CSS21] for more information on stacking contexts. The rules in this paragraph do not apply to SVG elements, since SVG has its own rendering model ([SVG11], Chapter 3).（由于opacity小于1的元素是由一个屏幕外的图片合成的，在它外面的内容不能被与它里面的内容按照z-order进行层叠显示。由于这个原因，实现必须为opacity小于1的元素创建一个新的stacking context。如果一个opacity小于1的元素不是定位元素，实现必须在它的父stacking context中绘制它创建的层，如果它是一个z-index属性为0且opacity为1的定位元素，会使用同样的stacking order。如果一个opacity小于1的元素是定位元素，z-index属性按照CSS 2.1描述的使用，除了auto作为0使用，因为总司会创建一个新的stacking context。）
+
+### width属性
+width指定了box的content width
+- 值为length、百分比、auto、inherit，百分比是相对于containing block
+- 初始值为auto
+- 非继承属性
+
+> width属性不应用于non-repaced inline元素。non-replaced inline元素的content width由在它里面的渲染的内容决定（before any relative offset of children）
+
+### Calculating widths and margins
+width、margin-left、margin-right、left、right属性的值依赖box的类型和其它的box。（用于布局的值有时候作为used value参考）。按原理来说，对于被一些更合适的值替换的auto和基于containing block计算的百分比，使用的值应该和computed value一样，但是有一些意外。下面的这些情况应该被区分
+- 1.inline non-replaced元素
+- 2.inline replaced元素
+- 3.normal flow中的block-level non-replaced元素
+- 4.normal flow中的block-level replaced元素
+- 5.floating non-replaced元素
+- 6.floating replaced元素
+- 7.absolutely positioned non-replaced元素
+- 8.absolutely positioned replaced元素
+- 9.normal flow中的inline-block non-replaced元素
+- 10.normal flow中的inline-block replaced元素
+
+> 下面计算width得到的值是一个暂时的值，可能会依赖min-width和max-width而重新计算很多次
+
+##### 1.inline non-replaced元素
+width属性不生效margin-left或margin-right的值如果是auto就被计算成0
+
+##### 2.inline replaced元素
+margin-left或margin-right的值如果是auto就计算成0
+
+如果height和width都有auto的computed value，并且这个元素有一个本身的宽度，那么这个资深的宽度就是width的used value；如果这个元素没有自身的宽度，但是有一个自身的高度和自身的比例，又或者width有auto的computed value，height有其他的computed value，这个元素有一个资深的比例，那么width的used value是：(used height) * (intrinsic ratio)
+
+如果height和width都有auto的computed value，并且这个元素有自身的比例但没有自身的width和height，那么在CSS 2.1中，width的used value是undefined。但建议如果containing block的width不依赖replaced元素的width，那么width的used value可以从normal flow中的block-level non-replaced元素的约束方程中计算得到。
+
+否则，如果width有一个auto的computed value，并且元素有自身的宽度，然后这个资深的宽度就是width的used value。
+
+否则，如果width有auto的computed value，但是上面的条件都没有满足，那么width的used value变成300px。如果300px对于设备来说太宽了，用户代理应该使用有2:1比例的最大矩形的宽去适应设备。
+
+##### 3.normal flow中的block-level non-replaced元素
+下面的约束必须hold在其他的属性的used values之间  
+margin-left + border-left-width + padding-left + width + padding-right + border-right-width + margin-right = containing block的width
+
+
+

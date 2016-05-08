@@ -198,7 +198,7 @@ The order in which the rendering tree is painted onto the canvas is described in
 
 根元素组成了根stacking context。其它stacking contexts由positioned元素（包括relatively positioned元素，有z-index的computed值，但不是auto）生成。对于containing block来说，stacking contexts并不是必须的。
 
-在每个stacking context中，下面的层按照从后到前的顺序进行渲染
+在每个stacking context中，按照下面的顺序从后到前的顺序进行渲染
 - 1.组成stacking context元素的background和borders
 - 2.负值的stack levels的子stacking contexts（从小到大）
 - 3.in-flow、non-inline-level、non-positioned后代元素
@@ -208,3 +208,93 @@ The order in which the rendering tree is painted onto the canvas is described in
 - 7.stack level为正数的子stacking contexts（从小到大）
 
 > 在每一个stacking context中，stack level 0的positioned元素（6）、non-positioned floats（4）、inline blocks（5）和inline tables（5）被绘制就好像这些元素自己生成了新的stacking context，除了它们的positioned后代和子stacking contexts。绘制的顺序是递归的。
+
+示例代码如下
+```
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<HEAD>
+<TITLE>Anonymous text interrupted by a block</TITLE>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+#div1{
+	width: 800px;
+	background: green;
+	border: 1px solid dashed;
+	position: relative;
+	z-index: 0;
+}
+#div2{
+	width: 800px;
+	height: 100px;
+	background: red;
+	position: absolute;
+	z-index: -10;
+	text-align: right;
+}
+#div3{
+	width: 700px;
+	height: 50px;
+	background: silver;
+	position: absolute;
+	z-index: -5;
+	text-align: right;
+}
+#div4{
+	width: 600px;
+	height: 60px;
+	background: maroon;
+}
+#div5{
+	width: 200px;
+	height: 400px;
+	float: left;
+	background: purple;
+}
+#div6{
+	display: inline-block;
+	width: 600px;
+	height: 500px;
+	background: fuchsia;
+}
+#div7{
+	width: 500px;
+	height: 50px;
+	position: absolute;
+	z-index: 0;
+	background: teal;
+	top: 200px;
+}
+#div8{
+	height: 70px;
+	background: yellow;
+	z-index: 0;
+}
+#div9{
+	width: 600px;
+	height: 400px;
+	background: blue;
+	z-index: 2;
+	position: absolute;
+	top: 220px;
+	left: 100px;
+}
+</style>
+</HEAD>
+<BODY>
+	<div id="div1">
+		div1
+		<div id="div2">div2</div>
+		<div id="div3">div3</div>
+		<div id="div4">div4</div>
+		<div id="div5">div5</div>
+		<div id="div6">div6</div>
+		<div id="div7">div7</div>
+		<div id="div8">div8</div>
+		<div id="div9">div9</div>
+	</div>
+</BODY>
+```

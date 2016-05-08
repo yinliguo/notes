@@ -462,3 +462,5 @@ height对于non-replaced inline元素无效
 height属性不生效。content area的高度应该基于字体，但是这个规范中没有指定实现方式。例如，一个用户代理可能会用em-box或者字体的ascender and descender。
 
 垂直方向的padding、border和margin开始于content area的顶部和底部，并且和line-height没有关系。但是当计算line box的高度时只能用line-height。
+
+##### 2.normal flow中的inline replaced元素、block-level replaced元素、inline-block replaced元素和floating replaced元素

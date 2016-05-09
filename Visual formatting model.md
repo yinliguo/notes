@@ -566,4 +566,4 @@ line-height属性
 vertical-align属性，这个属性影响由inline-level元素生成的boxes的line box的垂直位置
 - 值有baseline、sub、super、top、text-top、middle、bottom、text-bottom、百分比、length、inherit。百分比是相对于元素的line-height
 - 初始值baseline
--非继承属性
+- 非继承属性

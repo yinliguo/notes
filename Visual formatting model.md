@@ -464,3 +464,19 @@ height属性不生效。content area的高度应该基于字体，但是这个�
 垂直方向的padding、border和margin开始于content area的顶部和底部，并且和line-height没有关系。但是当计算line box的高度时只能用line-height。
 
 ##### 2.normal flow中的inline replaced元素、normal flow中的block-level replaced元素、normal flow中的inline-block replaced元素和floating replaced元素
+如果margin-top或者margin-bottom是auto，那么它们的used value为0
+
+如果height和width的computed value是auto，并且这个元素有自身的height，那么height的used value就是自身的height。
+
+否则，如果height的computed value是auto并且元素有一个自身的比例，那么height为(used width)/(instrinsic ratio)
+
+否则，如果height的computed value是auto，但是没有满足上面的条件，那么height的used value必须设置为最大矩形的高（这个矩形的比例为2:1，高不大于150px，并且宽度不大于设备宽度）
+
+##### 当overflow属性被设置为visible时，normal flow中的block-level non-repaced元素
+也适用当overflow不是visible但是已经传播到viewport的情况下的normal flow中的block-level non-replaced元素
+
+如果margin-top或margin-bottom为auto，那么它们的used value为0。如果height为auto，那么height依赖于元素是否有block-level的子元素和他是否有paddings或borders
+
+元素的height是它的top content edge到下面可用的位置：
+- 1.如果box创建了一个包含一个或多个lines的inline formatting context，下边缘就是最后一个line box的bottom edge
+- 2.如果后代元素的bottom margin没有和元素的bottom margin进行collapse，下边缘就是它最后一个in-flow子元素的bottom margin的bottom edge

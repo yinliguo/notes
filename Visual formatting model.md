@@ -472,7 +472,7 @@ height属性不生效。content area的高度应该基于字体，但是这个�
 
 否则，如果height的computed value是auto，但是没有满足上面的条件，那么height的used value必须设置为最大矩形的高（这个矩形的比例为2:1，高不大于150px，并且宽度不大于设备宽度）
 
-##### 当overflow属性被设置为visible时，normal flow中的block-level non-repaced元素
+##### 3.当overflow属性被设置为visible时，normal flow中的block-level non-repaced元素
 也适用当overflow不是visible但是已经传播到viewport的情况下的normal flow中的block-level non-replaced元素
 
 如果margin-top或margin-bottom为auto，那么它们的used value为0。如果height为auto，那么height依赖于元素是否有block-level的子元素和他是否有paddings或borders
@@ -480,3 +480,90 @@ height属性不生效。content area的高度应该基于字体，但是这个�
 元素的height是它的top content edge到下面可用的位置：
 - 1.如果box创建了一个包含一个或多个lines的inline formatting context，下边缘就是最后一个line box的bottom edge
 - 2.如果后代元素的bottom margin没有和元素的bottom margin进行collapse，下边缘就是它最后一个in-flow子元素的bottom margin的bottom edge
+- 3.最后一个top margin没有和元素的bottom margin进行collapse的子元素的bottom border edge
+- 4.0
+
+只有在normal flow中子元素被考虑（例如，floating boxes和absolutely positioned boxes被忽略，relatively positioned boxes不考虑它们的offset）。注意，子box可能是一个匿名block box。
+
+##### 4.absolutely positioned non-replaced元素
+对于absolutely positioned元素，它们的垂直尺寸的used value必须满足下面的约束：
+
+top +  margin-top + border-top-width + padding-top + height + padding-bottom + border-bottom-width + margin-bottom + bottom = containing block的高
+
+如果top、height、bottom都是auto，那么set top to the static position并且应用下面的第三条规则。
+
+如果上面的三个属性都不是auto，如果margin-top和margin-bottom是auto，那么在两个margins相等的条件下解上面的方程。如果margin-top和margin-bottom中的一个是auto，那么就解出这个值。如果值是over-constrained，就忽略bottom的值并解出这个值。（没看懂）
+
+否则，按照下面的规则进行求解
+- 1.top和height是auto，bottom不是auto，就将margin-top和margin-bottom的auto值设置为0，然后解出top
+- 2.top和bottom是auto，height不是auto，那么set top to the static position，将margin-top和margin-bottom的auto值设置为0，并解除bottom
+- 3.height和bottom是auto，top不是auto，那么将margin-top和margin-bottom的auto值设置为0，并解出bottom
+- 4.top是auto，height和bottom不是auto，那么设置margin-top和margin-bottom的auto值为0，并解出top
+- 5.height是auto，top和bottom不是auto，那么把margin-top和margin-bottom的auto值设置为0并解出height
+- 6.bottom是auto，top和height不是auto，那么设置margin-top和margin-bottom的auto值为0，并解出bottom
+
+##### 5.absolutely positioned replaced元素
+这种情形非常类似于前面的，除了元素有自身的高度，不同之处如下：
+- 1.height的used value想inline replaced元素那样进行计算。如果margin-top或margin-bottom被指定为auto，那么它的used value由下面的规则决定
+- 2.如果top和bottom都是auto，replace top with the element's static position
+- 3.如果bottom是auto，将margin-top和margin-bottom的auto值替换成0
+- 4.如果margin-top和margin-bottom仍然是auto，那么在两个margin相等的条件下解方程
+- 5.如果只剩下一个auto，那么就解出这个值
+- 6.如果值是over-constrained，那么忽略bottom并解出这个值
+
+##### 6.complicated cases
+这部分用于
+- 当overflow不是visible时，normal flow中的block-level non-replaced元素（除非overflow属性已经传播到viewport）
+- inline-block non-replaced元素
+- floating non-replaced元素
+
+如果margin-top或margin-bottom为auto，那么它们的used value为0.如果height是auto，那么height依赖于子元素
+
+对于inline-block元素而言，margin box用于计算line box的高度。
+
+##### 7.auto heights for block formatting context roots
+在第4和第6中情况下，创建了一个block formatting context的元素的height按照下面的进行计算：
+
+如果它只有inline-level子元素，那么height就是最高的line box的顶部和最低的line box的底部之间的距离。
+
+如果它有block-level子元素，height就是最高的block-level子box的top margin-edge和最低的block-level子box的bottom margin-edge之间的距离
+
+absolutely positioned子元素被忽略，relatively positioned boxes不考虑它们的offset。注意，子box可能是匿名block box。
+
+除此之外，如果元素有一个bottom margin edge低于该元素的bottom content edge的floating后代元素，那么height就加上这些边缘。只有在这个block formatting context的floats才会被计算，例如在absolutely positioned后代元素中的floats符合条件，但其它的floats不符合条件。
+
+### minimum and maximum heights: min-height and max-height
+这两个属性允许用户约束box的高度在一定的范围内。
+- 值为length、百分比、none、inherit。百分比相对于containing block
+- min-height的初始值为0，max-height的初始值为none
+- 非继承属性
+
+下面的算法描述了这两个属性如何影响height的used value
+- 1.在不使用min-height和max-height的情况下算出used height的临时值
+- 如果这个临时值大于max-height，就讲max-height的值作为computed value再计算一次
+- 如果结果比min-height小，就使用min-height作为computed value再次计算
+
+### line-height calculations: the line-height and vertical-align properties
+正如在inline formatting contexts中描述的，用户代理将inline-level boxes放进一个line boxes组成的垂直的stack中。line box的高度由下面决定：
+- 1.在line box中的每个inline-level box的高度都会被计算。对于replaced元素、inline-block元素和inline-table元素，是它们的margin box的高度；对于inline boxes，是它们的line-height属性的值。
+- 2.inline-level boxes按照它们的vertical-align属性垂直排列。如果它们按top或bottom排列，它们就必须排列地尽量减小line box的高度。如果boxes足够高，那么会有多种解决方案，并且CSS 2.1没有定义line box的baseline的位置。
+- 3.line box的高度是最高的box的顶部和最低的box的底部之间的距离
+
+空的inline元素生成空的inline boxes，但这些boxes仍然有margins、paddings、borders和line height，就像有内容的元素一样影响计算。
+
+##### leading and half-leading
+CSS声明了每种字体都有字体标准（指定了字符在baseline之上的高度和下面的深度）。
+
+line-height属性
+- 值为normal、number、length、百分比、inherit。百分比是相对于元素字体大小
+- 初始值为normal
+- 可继承属性
+
+在一个内容为inline-level元素的block container元素中，line-height指定了元素中的line-box的最小高度。这个最小高度由在baseline之上的最小高度和baseline之下的最小深度组成，就像每一个line box都以zero-width的、带有元素的字体和line-height属性inline box开头。我们成这个虚构的box为strut。
+
+在一个non-replaced inline元素中，line-height指定了高度用于计算line box height。
+
+vertical-align属性，这个属性影响由inline-level元素生成的boxes的line box的垂直位置
+- 值有baseline、sub、super、top、text-top、middle、bottom、text-bottom、百分比、length、inherit。百分比是相对于元素的line-height
+- 初始值baseline
+-非继承属性

@@ -13,19 +13,40 @@ CORS标准描述了新的HTTP headers（提供给浏览器和服务器一个方�
 
 ![](https://raw.githubusercontent.com/yinliguo/notes/master/img/Flowchart_showing_Simple_and_Preflight_XHR.png)
 
+### simple method、simple header、simple response header
+##### simple method
+> 匹配下面的方法（大小写敏感）
+
+- GET
+- HEAD
+- POST
+
+##### simple header
+> 如果header field name匹配Accept、Accept-Language（ASCII大小写不敏感），或者匹配Content-Type（ASCII大小写不敏感）并且值匹配application/x-www-form-urlencoded、multipart/form-data或者text/plain(ASCII大小写不敏感)，这种header就叫做simple header
+
+##### simple response header
+> 如果响应的header匹配下面的字段，就是simple response header（ASCII大小写不敏感）
+
+- Cache-Control
+- Content-Language
+- Content-Type
+- Expires
+- Last-Modified
+- Pragma
+
 ### 与CORS相关的headers
 Request headers
-- Origin
-- Access-Control-Request-Method
-- Access-Control-Request-Headers
+- Origin：跨域请求或预请求的来源
+- Access-Control-Request-Method：作为预请求的一部分，标志那个方法将在实际请求中使用
+- Access-Control-Request-Headers：作为预请求的一般部分，哪些header会在实际请求中使用
 
 Response headers
-- Access-Control-Allow-Origin
-- Access-Control-Allow-Credentials
-- Access-Control-Expose-Headers
-- Access-Control-Max-Age
-- Access-Control-Allow-Methods
-- Access-Control-Allow-Headers
+- Access-Control-Allow-Origin：资源是否能被Origin定义的字段共享，可选值为"\*"，null
+- Access-Control-Allow-Credentials：当omit credentials flag没有被设置，响应能否暴露
+- Access-Control-Expose-Headers：哪些header可以安全地暴露给CORS APIs
+- Access-Control-Max-Age：预请求的结果缓存多长时间
+- Access-Control-Allow-Methods：作为预请求响应的一部分，标志哪些方法可以在实际请求中使用
+- Access-Control-Allow-Headers：作为预请求响应的一部分，标志哪些header可以在实际请求中使用
 
 ### CORS vs JSONP
 CORS可以被用于现代浏览器取代JSONP。JSONP只支持GET方法，CORS支持其它的方法。CORS使web开发者能使用XMLHttpRequest，XMLHttpRequest提供了比JSONP更好的错误处理机制。另一方面JSONP支持较早的浏览器。当外部网站妥协时，JSONP会引起XSS问题，CORS允许网站手动处理结果以保证安全。

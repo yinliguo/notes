@@ -12,3 +12,21 @@ CORS标准描述了新的HTTP headers（提供给浏览器和服务器一个方�
 对于AJAX和HTTP request methods（那些能够修改数据，通常是带确定的MIME类型的、非GET和POST的方法），规范授权浏览器在发送请求之前使用HTTP OPTIONS请求去索要服务器端支持的方法，然后根据结果发送实际的请求。服务器也会通知客户端是否随请求发送资格认证（包括Cookies和HTTP认证数据）
 
 ![](https://raw.githubusercontent.com/yinliguo/notes/master/img/Flowchart_showing_Simple_and_Preflight_XHR.png)
+
+### 与CORS相关的headers
+Request headers
+- Origin
+- Access-Control-Request-Method
+- Access-Control-Request-Headers
+
+Response headers
+- Access-Control-Allow-Origin
+- Access-Control-Allow-Credentials
+- Access-Control-Expose-Headers
+- Access-Control-Max-Age
+- Access-Control-Allow-Methods
+- Access-Control-Allow-Headers
+
+### CORS vs JSONP
+CORS可以被用于现代浏览器取代JSONP。JSONP只支持GET方法，CORS支持其它的方法。CORS使web开发者能使用XMLHttpRequest，XMLHttpRequest提供了比JSONP更好的错误处理机制。另一方面JSONP支持较早的浏览器。当外部网站妥协时，JSONP会引起XSS问题，CORS允许网站手动处理结果以保证安全。
+

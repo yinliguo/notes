@@ -10,3 +10,5 @@
 CORS标准描述了新的HTTP headers（提供给浏览器和服务器一个方式去请求它们有权限的远程URLs）。尽管服务器端能实现一些验证和授权，但通常是浏览器负责支持这些headers并且honor the restrictions they impose。
 
 对于AJAX和HTTP request methods（那些能够修改数据，通常是带确定的MIME类型的、非GET和POST的方法），规范授权浏览器在发送请求之前使用HTTP OPTIONS请求去索要服务器端支持的方法，然后根据结果发送实际的请求。服务器也会通知客户端是否随请求发送资格认证（包括Cookies和HTTP认证数据）
+
+![](https://raw.githubusercontent.com/yinliguo/notes/master/img/Flowchart_showing_Simple_and_Preflight_XHR.png)

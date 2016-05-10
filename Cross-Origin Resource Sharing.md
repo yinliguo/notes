@@ -51,3 +51,6 @@ Response headers
 ### CORS vs JSONP
 CORS可以被用于现代浏览器取代JSONP。JSONP只支持GET方法，CORS支持其它的方法。CORS使web开发者能使用XMLHttpRequest，XMLHttpRequest提供了比JSONP更好的错误处理机制。另一方面JSONP支持较早的浏览器。当外部网站妥协时，JSONP会引起XSS问题，CORS允许网站手动处理结果以保证安全。
 
+
+关于更多的知识参考 https://www.w3.org/TR/cors/
+

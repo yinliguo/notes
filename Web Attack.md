@@ -4,7 +4,7 @@
 跨站请求伪造。利用浏览器去给一个认证过的网站发请求，由于认证过，所以被访问的网站以为这个用户行为，
 
 ##### 例子
-一家银行的转账地址是 http://www.examplebank.com/withdraw?account=AccoutName&amount=1000&for=PayeeName ，在另一个网站上放一个链接  \<a href="http://www.examplebank.com/withdraw?account=Alice&amount=1000&for=Badman">。如果一个用户登录完银行，然后又点击了这个恶意网站的这个url，那么就中招了。
+一家银行的转账地址是 http://www.examplebank.com/withdraw?account=AccoutName&amount=1000&for=PayeeName ，在另一个网站上放一个链接  \<a href="http://www.examplebank.com/withdraw?account=Alice&amount=1000&for=Badman"\>。如果一个用户登录完银行，然后又点击了这个恶意网站的这个url，那么就中招了。
 
 ##### 分析
 CSRF不能获取用户的信息，也不能直接操作用户，只是利用了简单的身份认证实现了用户行为的操作

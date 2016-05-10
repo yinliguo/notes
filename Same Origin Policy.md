@@ -31,8 +31,8 @@
 现代浏览器允许脚本连接到一个不同源的WebSocket地址。但是浏览器会识别并添加脚本的源到请求链接的header中。为了保证跨域安全，WebSocket网站必须将header数据与白名单进行对比。
 
 ### 同源策略的限制及解决方法
-- Cookie、LocalStorage 和 IndexDB 无法读取
-- DOM 无法获得
-- AJAX 请求不能发送
+- Cookie、LocalStorage 和 IndexDB 无法读取（使用方法1）
+- DOM 无法获得，例如iframe（如果只有二、三级域名不同，可以使用方法1；否则使用方法3）
+- AJAX 请求不能发送（方法2、4、5）
 
 

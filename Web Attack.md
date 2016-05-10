@@ -39,8 +39,30 @@ XSS攻击主要是由用户输入中携带恶意代码造成的，需要对用�
 -------------------------
 
 ### SQL injection
-SQL注入。
+SQL注入。在输入的地方加入SQL指令，被服务器当做正常的SQL语句执行后，会获取到网站的数据。
 
+##### 例子
+某个网站的登录查询语句是
+```
+strSQL = "SELECT * FROM users WHERE (name = '" + userName + "') and (pw = '"+ passWord +"');"
+```
+恶意输入
+```
+userName = "1' OR '1'='1";
+passWord = "1' OR '1'='1";
+```
+这条语句就会变成
+```
+strSQL = "SELECT * FROM users WHERE (name = '1' OR '1'='1') and (pw = '1' OR '1'='1');"
+即
+strSQL = "SELECT * FROM users;"
+```
 
+##### 分析
+SQL注入是利用的SQL语句的漏洞，只要不生成恶意SQL语句即可
+
+##### 防御
+- 使用参数化查询
+- 对输入的参数做过滤
 
 

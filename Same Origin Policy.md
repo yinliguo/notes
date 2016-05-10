@@ -12,5 +12,23 @@
 
 读取其它的源的信息的限制是subtle的。script标签能够执行从其它的源获取的内容，这意味着网站不能依赖于同源策略去保护信息（作为script格式解析，例如，js源文件、JSON格式、JSONP服务、JavaScript/gif polyglots）的机密性。对于这类资源，通过在所有响应中增加Access-Control-Allow-Origin:\*头信息来保护安全性，并且增加了很大的灵活性。
 
+以上内容翻译自https://www.w3.org/Security/wiki/Same_Origin_Policy
+
+### 绕过同源策略的方法
+##### 1. document.domain
+如果两个window（或iframe）包含的脚本设置domain为同一个值，同源策略就失效了，每个window都能同其它的window交互。例如，orders.example.com的脚本和catalog.example.com的脚本可能设置它们的document.domain为example.com，因此使文档具有同样的源并且使每个文档都能读取其他文档的属性。由于浏览器的差异，可能会把端口80变成null，那样就会失败。
+
+##### 2. Cross-Origin Resource Share
+这是标准的跨域方法，这个方法扩展了一个新的Origin request header和一个新的Access-Control-Allow-Origin的header字段。它允许服务器用一个header明确地列出能请求一个文件的源，或者用通配符允许所有网站都能请求一个文件
+
+##### 3. Cross-document messaging
+允许一个页面的脚本传递文字信息到另一个页面的脚本，而不用理会脚本的源。异步调用window对象的postMessage方法触发window对象的onmessage事件，执行用户定义的操作。一个页面上的脚本始终不能直接访问另一个页面上的方法或变量，但它们可以通过消息机制进行安全通信。
+
+##### 4. JSONP
+通过在页面上增加一个script标签来接收JSON数据，响应中含有callback
+
+##### 5. WebSockets
+现代浏览器允许脚本连接到一个不同源的WebSocket地址。但是浏览器会识别并添加脚本的源到请求链接的header中。为了保证跨域安全，WebSocket网站必须将header数据与白名单进行对比。
+
 
 

@@ -41,7 +41,7 @@ require是一个函数，使用规则如下：
 
 -------------
 ## AMD
-Asynchronous Module Definition(AMD)指定了一种机制：模块和它依赖的模块能被异步加载。特别适合浏览器环境，因为浏览器环境下，同步加载会带来性能问题、可用性、调试和跨域访问的问题。
+Asynchronous Module Definition([AMD](https://github.com/amdjs/amdjs-api/blob/master/AMD.md))指定了一种机制：模块和它依赖的模块能被异步加载。特别适合浏览器环境，因为浏览器环境下，同步加载会带来性能问题、可用性、调试和跨域访问的问题。
 
 #### define函数
 该规范指定了一个define函数，作为一个自由变量或全局变量使用。格式如下
@@ -67,3 +67,10 @@ define(id?, dependencies?, factory)
 在某些情况下，例如由于代码大小限制或缺少toString函数的支持（Opera没有toString），模块加载器不会去读取factory源代码。
 
 如果依赖参数给定，那么就不应该读取factory的源代码。
+
+#### define.amd属性
+为了明确标识全局定义函数（浏览器加载script标签的src需要）遵从AMD API，任何全局定义函数应该有一个amd属性，值是一个对象。帮助避免与其它不符合AMD规范并且已经定义了define函数的js代码冲突。
+
+在define.amd对象中属性并指定，它可以用于实现中在基本API之上的能力的通知。（没看懂）
+
+define.amd属性的存在标志着和这个API的一致性，如果有这个API的其它版本，可以定义一个其它的属性例如define.amd2，标志实现与API版本一致。

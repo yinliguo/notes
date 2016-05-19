@@ -73,3 +73,5 @@ border-color
 border-style
 - 值为border-style|inherit
 - 非继承属性
+
+![](https://raw.githubusercontent.com/yinliguo/notes/master/img/5AAyW.png)

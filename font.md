@@ -1,8 +1,5 @@
 ## font
 
-### 3种常用的sans-serif字体
-Verdana、Trebuchet、Helvetica
-
 ### 互联网安全字体
 Arial、Arial Black、Comic Sans MS、Courier New、Georgia、Impact、Times New Roman、Trebuchet MS、Verdana
 ![](https://raw.githubusercontent.com/yinliguo/notes/master/img/type_safe-fontsthumb.png)

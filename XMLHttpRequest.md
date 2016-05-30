@@ -13,15 +13,15 @@ var client = new XMLHttpRequest();
 ### 事件处理
 下面是事件处理器和对应的事件类型，依赖于一个实现了XMLHttpRequestEventTarget接口的对象，这些事件处理器作为这个对象的属性
 
-|event handler  |event type |
-|---------------|:---------:|
-|onloadstart	|loadstart	|
-|onprogress		|progress	|
-|onabort		|abort		|
-|onerror		|error		|
-|onload			|load		|
-|ontimeout		|timeout	|
-|onloadend		|loadend	|
+|event handler  |event type |描述
+|---------------|:---------:|:----------------------:|
+|onloadstart	|loadstart	|开始请求				  |
+|onprogress		|progress	|正在传输数据				 |
+|onabort		|abort		|请求被终止				  |
+|onerror		|error		|请求失败				   |
+|onload			|load		|请求已完成（成功）			|
+|ontimeout		|timeout	|请求超时				   |
+|onloadend		|loadend	|请求已完成（无论成功或失败）	|
 
 下面的事件处理器作为一个XMLHttpRequest的属性
 

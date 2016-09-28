@@ -411,7 +411,7 @@ a.forEach(function(ele, i, arr){arr[i] = ele - 1;}); // a变为[0, 1, 2]
 遍历数组并应用callbackfn，参数为element, index, array
 
 var a = [1, 2, 3];
-a.forEach(function(ele, i, arr){arr[i] = ele - 1;}); // a变为[0, 1, 2]
+a.map(function(ele, i, arr){return ele - 1;}); // a变为[0, 1, 2]
 ```
 - Array.prototype.filter(callbackfn[, thisArg])
 ```

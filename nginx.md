@@ -7,4 +7,4 @@
 
 ### FAQ
 > Q: ./configure时报错缺少pcre  
-A: 下载[pcre-8.38.tar.gz](ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/)并解压，然后在nginx目录中使用`./configure --with-pcre={解压后的pcre路径}`
+A: 下载pcre-8.38.tar.gz（ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/）， 并解压，然后在nginx目录中使用`./configure --with-pcre={解压后的pcre路径}`

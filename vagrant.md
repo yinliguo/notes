@@ -106,19 +106,19 @@ FAQ：
    需要安装gcc和gcc-c++，再安装kernel-devel，红帽系列使用yum -y install gcc gcc-c++ kernel kernel-devel kernel-headers，debian系列使用sudo apt-get install gcc gcc-c++ kernel kernel-devel kernel-headers，然后重启就可以正常安装VBoxGuestAdditions了
 
  5. 导入box文件，启动虚拟机时，出现无法启动网卡的问题  
-删除/etc/udev/rules.d/70-persistent-net.rules，然后再vagrant reload即可
+  删除/etc/udev/rules.d/70-persistent-net.rules，然后再vagrant reload即可
 
  6. 挂载共享文件夹后的访问权限问题  
  
-可以通过设置Vagrantfile文件的config.vm.synced_folder的属性，比如  
+  可以通过设置Vagrantfile文件的config.vm.synced_folder的属性，比如  
 ```
 config.vm.synced_folder "/Users/abc/myproject", "/www", :mount_options => ["dmode=777", "fmode=777"]
 ```
 
  7. 如何在原来的基础上打包？  
  
-在Vagrantfile文件所在的目录下使用`vagrant package`则会把新增加的内容打包
+  在Vagrantfile文件所在的目录下使用`vagrant package`则会把新增加的内容打包
 
  8. Vagrant was unable to mount VirtualBox shared folders. This is usuallybecause the filesystem "vboxsf" is not available. This filesystem ismade available via the VirtualBox Guest Additions and kernel module.Please verify that these guest additions are properly installed in theguest. This is not a bug in Vagrant and is usually caused by a faultyVagrant box.
  
-使用命令`vagrant plugin install vagrant-vbguest`
+  使用命令`vagrant plugin install vagrant-vbguest`

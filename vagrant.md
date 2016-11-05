@@ -110,10 +110,7 @@ FAQ：
 
  6. 挂载共享文件夹后的访问权限问题  
  
-  可以通过设置Vagrantfile文件的config.vm.synced_folder的属性，比如  
-```
-config.vm.synced_folder "/Users/abc/myproject", "/www", :mount_options => ["dmode=777", "fmode=777"]
-```
+  可以通过设置Vagrantfile文件的config.vm.synced_folder的属性，比如  `config.vm.synced_folder "/Users/abc/myproject", "/www", :mount_options => ["dmode=777", "fmode=777"]`
 
  7. 如何在原来的基础上打包？  
  

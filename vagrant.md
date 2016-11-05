@@ -113,5 +113,9 @@ FAQ：
 ```
 config.vm.synced_folder "/Users/abc/myproject", "/www", :mount_options => ["dmode=777", "fmode=777"]
 ```
+
  7. 如何在原来的基础上打包？  
 在Vagrantfile文件所在的目录下使用`vagrant package`则会把新增加的内容打包
+
+ 8. Vagrant was unable to mount VirtualBox shared folders. This is usuallybecause the filesystem "vboxsf" is not available. This filesystem ismade available via the VirtualBox Guest Additions and kernel module.Please verify that these guest additions are properly installed in theguest. This is not a bug in Vagrant and is usually caused by a faultyVagrant box.
+使用命令`vagrant plugin install vagrant-vbguest`

@@ -39,3 +39,11 @@ var now = (new Date()).getTime();
 ```
 - js控制windows media player的ActiveX时，Player.controls中的属性和方法是无法打印出来的，但可以调用
 - 事件绑定需要使用attachEvent
+- 获取选中的文字时，ie8只能用document.selection.createRange()，其他则用document.getSelection()
+```
+if (document.getSelection) {
+	return document.getSelection().toString();
+} else if (document.selection) {
+	reurn document.selection.createRange().text;
+}
+```

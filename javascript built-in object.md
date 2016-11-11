@@ -853,6 +853,23 @@ t.toJSON(); // '2016-03-18T09:42:33.410Z'
 - RegExp.prototype.test(string)
 - RegExp.prototype.toString()
 
+##### 补充非捕获分组
+- (?:)、(?=)、(?!)
+```
+var str1 = 'window 95';
+var str2 = 'window NT';
+
+/windows (95|2000)/.exec(str1); // ['windows 95', '95']
+
+/windows (?:95|2000)/.exec(str1); // ['windows 95']
+
+/windows (?=95|2000)/.exec(str1); // ['windows ']
+/windows (?=95|2000)/.exec(str2); // null
+
+/windows (?!95|2000)/.exec(str1); // null
+/windows (?!95|2000)/.exec(str2); // ['windows ']
+```
+
 ### Error Objects
 ##### Properties of the Error Constructor
 - Error.prototype

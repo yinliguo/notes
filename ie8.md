@@ -47,3 +47,4 @@ if (document.getSelection) {
 	reurn document.selection.createRange().text;
 }
 ```
+- IE对GET请求有缓存，需要在web服务器上设置过期时间

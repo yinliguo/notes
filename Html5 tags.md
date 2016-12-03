@@ -208,13 +208,13 @@ figure内容的标题
 下标
 
 - i  
-斜体。a span of text in an alternate voice or mood, or otherwise offset from the normal prose in a manner indicating a different quality of text, such as a taxonomic designation, a technical term, an idiomatic phrase from another language, transliteration, a thought, or a ship name in Western texts.
+斜体。a span of text in an alternate voice or mood, or otherwise offset from the normal prose in a manner indicating a different quality of text, such as a taxonomic designation, a technical term, an idiomatic phrase from another language, transliteration, a thought, or a ship name in Western texts.（谷歌翻译：替代语音或情绪中的文本跨度，或者以指示不同质量的文本的方式偏离正常散文，诸如分类标记，技术术语，来自另一语言的惯用短语，音译，思想， 或西方文本中的船名）
 
 - b  
-粗体。a span of text to which attention is being drawn for utilitarian purposes without conveying any extra importance and with no implication of an alternate voice or mood, such as key words in a document abstract, product names in a review, actionable words in interactive text-driven software, or an article lede.
+粗体。a span of text to which attention is being drawn for utilitarian purposes without conveying any extra importance and with no implication of an alternate voice or mood, such as key words in a document abstract, product names in a review, actionable words in interactive text-driven software, or an article lede.（谷歌翻译：为了实用目的而引起注意的文本跨度，而没有传达任何额外的重要性，并且没有替代声音或情绪的暗示，诸如文档摘要中的关键词，评论中的产品名称，交互式文本中的可操作词 - 驱动软件或文章lede）
 
 - u  
-下划线。a span of text with an unarticulated, though explicitly rendered, non-textual annotation, such as labeling the text as being a proper name in Chinese text (a Chinese proper name mark), or labeling the text as being misspelt.
+下划线。a span of text with an unarticulated, though explicitly rendered, non-textual annotation, such as labeling the text as being a proper name in Chinese text (a Chinese proper name mark), or labeling the text as being misspelt.（谷歌翻译：具有未标注但是明确呈现的非文本注释的文本的跨度，诸如将文本标记为中文文本中的专有名称（中文专有名称标记），或将文本标记为拼写错误）
 
 - mark  
 高亮

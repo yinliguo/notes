@@ -76,7 +76,7 @@ client.timeout
 ```
 
 ##### withCredentials属性
-在跨域请求中包含用户资格认证时为true，否则为false，默认为false
+在跨域请求中包含用户资格认证时为true，否则为false，默认为false。当XHR的状态是UNSENT或OPENED时进行设置，否则就会抛出InvalidStateError
 ```
 client.withCredentials
 ```

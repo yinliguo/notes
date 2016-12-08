@@ -1,6 +1,7 @@
 ## XMLHttpRequest
 
 > XMLHttpRequest是一个获取资源的API
+> XMLHttpRequest对象最初是作为WATHWG的HTML工作的一部分（基于微软多年以前的实现），2006年被移入W3C。直到2011年底，XMLHttpRequest的一些扩展（比如progress事件和跨域请求）才在一个单独的草案（XMLHttpRequest Level 2）中被开发出来，这时候把两个规范合并起来，XMLHttpRequest再次成为一个单独的实体。2012年底被移回WHATWG。
 
 ### 构造函数
 ```
@@ -9,6 +10,9 @@ var client = new XMLHttpRequest();
 - 1. 生成一个新的XMLHttpRequest对象xhr
 - 2. Set xhr's settings object to the relevant settings object for the global object of xhr's interface object.
 - 3. 返回xhr
+
+### 接口
+![接口](https://raw.githubusercontent.com/yinliguo/notes/master/img/XMLHttpRequest%20Standard.png)
 
 ### 事件处理
 下面是事件处理器和对应的事件类型，依赖于一个实现了XMLHttpRequestEventTarget接口的对象，这些事件处理器作为这个对象的属性
@@ -124,6 +128,12 @@ client.overrideMimeType(mime)
 
 ##### responseType属性
 返回响应的类型
+- ""
+- "arraybuffer"
+- "blob"
+- "document"
+- "json"
+- "text"
 ```
 client.responseType
 ```
@@ -145,3 +155,10 @@ client.responseText
 ```
 client.responseXML
 ```
+
+### 垃圾回收
+当一个XMLHttpRequest对象的状态是opened、headers received或loading时，它不能被垃圾回收，并且它注册了一个或多个事件监听器，例如readystatechange、progress、abort、error、load、timeout、loaded。如果连接还是打开的，要想对这个XMLHttpRequest对象进行垃圾回收，客户端必须终止这个请求。
+
+
+### 引用资料
+- [XMLHttpRequest Living Standard](https://xhr.spec.whatwg.org/)

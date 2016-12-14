@@ -48,3 +48,4 @@ if (document.getSelection) {
 }
 ```
 - IE对GET请求有缓存，需要在web服务器上设置过期时间
+- IE的video不支持wav

@@ -83,6 +83,38 @@
 // 定义网页作者
 <meta name="author" content="author,email address">
 
-// 定义网页搜索引擎方式，通常的取值有none，noindex，nofollow，all，index和follow
+// 定义网页搜索引擎方式，通常的取值有
+none
+index 正常索引
+noindex 不索引
+follow 抓取该页面的链接
+nofollow 不抓取该页面的链接
+all
 <meta name="robots" content="index,follow">
+```
+
+### viewport
+> viewport 可以让布局在移动浏览器上显示的更好。content的可选参数如下
+
+- width：viewport 宽度(数值/device-width)
+- height：viewport 高度(数值/device-height)
+- initial-scale：初始缩放比例
+- maximum-scale：最大缩放比例
+- minimum-scale：最小缩放比例
+- user-scalable 是否允许用户缩放(yes/no)
+
+```
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+
+### iOS添加到主屏的标题（iOS6 later）
+```
+<meta name="apple-mobile-web-app-title" content="标题">
+```
+
+### iOS是否启用WebApp全屏模式
+> 需要添加到主屏幕后再打开即可看到全屏
+
+```
+<meta name="apple-mobile-web-app-capable" content="yes" />
 ```

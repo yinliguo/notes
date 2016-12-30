@@ -118,3 +118,33 @@ all
 ```
 <meta name="apple-mobile-web-app-capable" content="yes" />
 ```
+
+### iOS设置状态栏的背景颜色
+> 需要启用WebApp全屏模式后才能生效。content取值如下
+
+- default：默认值
+- black：黑色
+- black-translucent：黑色半透明。顶部会被状态栏遮挡
+
+```
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+```
+
+### iOS添加到主屏的图标
+```
+<link rel="apple-touch-icon" href="/apple-touch-icon-57x57.png" />
+// 没有效果
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57x57-precomposed.png" />
+```
+
+### iOS webapp startup image
+> iOS10下没有试验成功
+
+```
+<link rel="apple-touch-startup-image" sizes="640x960" href="/splash-screen-640x960.png" />
+```
+
+### favicon icon
+```
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+```

@@ -119,3 +119,14 @@ FAQ：
  8. Vagrant was unable to mount VirtualBox shared folders. This is usuallybecause the filesystem "vboxsf" is not available. This filesystem ismade available via the VirtualBox Guest Additions and kernel module.Please verify that these guest additions are properly installed in theguest. This is not a bug in Vagrant and is usually caused by a faultyVagrant box.
  
   使用命令`vagrant plugin install vagrant-vbguest`
+  
+ 9. 安装VBoxGuestAdditions时出现Could not find the X.Org or XFree86 Window System
+```
+yum -y install xorg-x11-drivers xorg-x11-utils
+```
+ 10. 启动时出现Warning: Authentication failure. Retrying  
+ 可以在Vagrantfile里加上
+ ```
+ config.ssh.username="vagrant"
+ config.ssh.password="vagrant"
+ ```

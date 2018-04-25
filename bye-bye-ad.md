@@ -63,7 +63,7 @@
     position: static;
 }
 body {
-    background-color: #FCFCFC;
+    background-color: #f8f8f8;
 }
 
 

@@ -83,4 +83,9 @@ Sec-WebSocket-Extensions: foo
 ### Sending and Receiving data
 * 为了避免网络中间人，如解释代理(intercepting proxies)迷惑，和安全考虑，客户端必须对所有发送到服务器的帧进行掩码处理，如果服务器发现没有做掩码处理，可能会发送1002状态码的关闭帧给客户端。服务器不能发送给客户端掩码处理的帧，如果客户端接收了掩码处理的帧，必须关闭连接，可能会发送1002状态码（这些规则将来可能会发生变化）
 
+![帧格式](https://raw.githubusercontent.com/yinliguo/notes/master/img/websocket-frame.png)
+
+* FIN：1bit，标记是否是最后一帧。第一帧有可能也是最后一帧
+* RSV1, RSV2, RSV3：每个字段1bit，
+
 ### Closing the Connection

@@ -85,7 +85,21 @@ Sec-WebSocket-Extensions: foo
 
 ![帧格式](https://raw.githubusercontent.com/yinliguo/notes/master/img/websocket-frame.png)
 
-* FIN：1bit，标记是否是最后一帧。第一帧有可能也是最后一帧
-* RSV1, RSV2, RSV3：每个字段1bit，
+* FIN: 1bit，标记是否是最后一帧。第一帧有可能也是最后一帧
+* RSV1, RSV2, RSV3: 每个字段1bit，且都为0，除非协商好了使用扩展并定义了非0的值。如果收到了非0的值但是没有使用扩展或者与扩展定义的值不同，接收端必须标记连接失败。
+* opcode: 4bits， 定义了Payload data的说明，如下
+
+```
+%x0 继续
+%x1 文本
+%x2 二进制
+%x3-7 预留给将来的非控制帧
+%x8 关闭连接
+%x9 ping
+%xA pong
+%xB-F 预留给将来的控制帧
+```
+* MASK: 1bit, 定义Payload data是否掩码处理，如果为1，需要用 Masking-key解码数据，从客户端发到服务器的都是1
+* Payload len, Extended payload length: 7bits，7+16bits或7+64bits。标识Payload Data的长度。如果Payload len是0-125，这就是Payload Data的字节数；如果Payload len=126，接下来的2个字节解释为16位无符号数字，作为Payload Data的长度(字节数)；如果Payload len=127，接下来的4个字节解释为无符号数字，作为Payload Data的长度。多子节长度按照网络字节序列排列。如果是Payload Data是124字节，Payload len就是124，不能设置成126，再占用Extended payload length。"Payload Data"="Extension data"+"Application data"，Extension data可能是0
 
 ### Closing the Connection

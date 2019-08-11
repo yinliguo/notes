@@ -2,7 +2,6 @@
 ```
 set number
 set relativenumber
-set cursorline
 set timeoutlen=0
 set tabstop=4
 set shiftwidth=4

@@ -8,6 +8,8 @@ set shiftwidth=4 softtabstop=4 expandtab
 filetype plugin on
 runtime macros/matchit.vim
 
+nnoremap<silent> <C-l> :<C-u>nohlsearch<CR><C-l>`
+
 syntax on
 set background=dark
 

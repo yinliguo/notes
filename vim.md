@@ -5,6 +5,7 @@ set relativenumber
 set timeoutlen=0
 set tabstop=4
 set shiftwidth=4 softtabstop=4 expandtab
+set hls
 filetype plugin on
 runtime macros/matchit.vim
 

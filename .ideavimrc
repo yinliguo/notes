@@ -4,5 +4,9 @@ set relativenumber
 set showmode
 set hls
 set ignorecase
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
 nnoremap<silent> <C-l> :<C-u>nohlsearch<CR><C-l>`
 ```
